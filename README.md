@@ -12,31 +12,31 @@ There is a lazy option (only 3 per 3 view controllers in the memory) and infinit
 
 ## CMLazyScrollViewController Properties:
 ```swift
-   // properties for the scrollview
-   public var isPagingEnable = true
-   public var isHorizontalScrollIndicatorHidden = false
-   public var isVerticalScrollIndicatorHidden = false
-   // scroll view delegate which will be call after every delegate function
-   public var scrollDelegate : UIScrollViewDelegate?
+// properties for the scrollview
+public var isPagingEnable = true
+public var isHorizontalScrollIndicatorHidden = false
+public var isVerticalScrollIndicatorHidden = false
+// scroll view delegate which will be call after every delegate function
+public var scrollDelegate : UIScrollViewDelegate?
 ```
 
 ## CMLazyScrollViewController Usage Example:
 ```swift
-  let carousel = CMLazyScrollViewController()
-  carousel.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-  carousel.infinite = true
-  carousel.isPagingEnable = true
-  carousel.delegate = self
-  self.addChildViewController(carousel)
-  self.view.addSubview(carousel.view)
+let carousel = CMLazyScrollViewController()
+carousel.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+carousel.infinite = true
+carousel.isPagingEnable = true
+carousel.delegate = self
+self.addChildViewController(carousel)
+self.view.addSubview(carousel.view)
 ```
 
 ## CMLazyScrollViewController Delegation : CMLazyScrollViewControllerDelegate
 ```swift
-  // ask for the number of view in the controller
-  func numberOfViewsIn(scrollViewController : CMLazyScrollViewController) -> Int
-  // request a view controller to show at the index
-  func viewIn(scrollViewController : CMLazyScrollViewController, index: Int) -> UIViewController
+// ask for the number of view in the controller
+func numberOfViewControllersIn(scrollViewController : CMLazyScrollViewController) -> Int
+// request a view controller to show at the index
+func viewControllerIn(scrollViewController : CMLazyScrollViewController, atIndex: Int) -> UIViewController    
 ```
 
 ## Installation
