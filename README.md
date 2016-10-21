@@ -12,21 +12,32 @@ There is a lazy option (only 3 per 3 view controllers in the memory) and infinit
 
 ## CMLazyScrollViewController Properties:
 ```swift
+   // properties for the scrollview
+   public var isPagingEnable = true
+   public var isHorizontalScrollIndicatorHidden = false
+   public var isVerticalScrollIndicatorHidden = false
+   // scroll view delegate which will be call after every delegate function
+   public var scrollDelegate : UIScrollViewDelegate?
 ```
 
 ## CMLazyScrollViewController Usage Example:
 ```swift
-func numberOfViewsInCarousel(scrollViewController : CMLazyScrollViewController) -> Int
-func viewInCarousel(scrollViewController : CMLazyScrollViewController, index: Int) -> UIViewController
+  let carousel = CMLazyScrollViewController()
+  carousel.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+  carousel.infinite = true
+  carousel.isPagingEnable = true
+  carousel.delegate = self
+  self.addChildViewController(carousel)
+  self.view.addSubview(carousel.view)
 ```
 
-## CMSteppedProgressBar Delegation : CMSteppedProgressBarDelegate
-Called when the user click on an activated step dot, send you the sender and the step clicked
+## CMLazyScrollViewController Delegation : CMLazyScrollViewControllerDelegate
 ```swift
-- (void)steppedBar:(CMSteppedProgressBar *)steppedBar didSelectIndex:(NSUInteger)index;
+  // ask for the number of view in the controller
+  func numberOfViewsIn(scrollViewController : CMLazyScrollViewController) -> Int
+  // request a view controller to show at the index
+  func viewIn(scrollViewController : CMLazyScrollViewController, index: Int) -> UIViewController
 ```
-
-
 
 ## Installation
 CMLazyScrollViewController is available through [CocoaPods](http://cocoapods.org). To install
