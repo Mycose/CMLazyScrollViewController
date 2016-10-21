@@ -9,8 +9,8 @@
 import UIKit
 
 public protocol CMLazyScrollViewControllerDelegate : class {
-    func numberOfViewsInCarousel(scrollViewController : CMLazyScrollViewController) -> Int
-    func viewInCarousel(scrollViewController : CMLazyScrollViewController, index: Int) -> UIViewController
+    func numberOfViewControllersIn(scrollViewController : CMLazyScrollViewController) -> Int
+    func viewControllerIn(scrollViewController : CMLazyScrollViewController, atIndex: Int) -> UIViewController
 }
 
 public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate {
@@ -69,7 +69,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // if you arrive on the first or last element, i scroll to the n-1 or index 1 element
     public var infinite = false {
         didSet {
-            self.reloadCarousel()
+            self.reload()
         }
     }
 
@@ -105,19 +105,19 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // carousel view controller delegate
     public var delegate : CMLazyScrollViewControllerDelegate? {
         didSet {
-            self.reloadCarousel()
+            self.reload()
         }
     }
 
     // MARK: - PUBLIC FUNCTIONS
     // remove all views and rebuild the carousel
-    public func reloadCarousel() {
+    public func reload() {
         if let delegate = self.delegate {
 
             self.pageSize = self.view.frame.size
             self.cleanArray()
 
-            self.numberOfViews = delegate.numberOfViewsInCarousel(scrollViewController: self)
+            self.numberOfViews = delegate.numberOfViewControllersIn(scrollViewController: self)
             self.pageControl.numberOfPages = self.numberOfViews
             if self.infinite == true {
                 self.numberOfViews += 2
@@ -140,7 +140,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         if self.viewsInCache[index] != nil {
             vc = self.viewsInCache[index]!
         } else {
-            vc = self.delegate?.viewInCarousel(scrollViewController: self, index: fixedIndex) ?? UIViewController()
+            vc = self.delegate?.viewControllerIn(scrollViewController: self, atIndex: fixedIndex) ?? UIViewController()
         }
 
 

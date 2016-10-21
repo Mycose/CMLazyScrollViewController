@@ -35,13 +35,13 @@ class ViewController: UIViewController, CMLazyScrollViewControllerDelegate, UISc
     }
 
     // MARK: CMLazyScrollViewControllerDelegate
-    func numberOfViewsInCarousel(scrollViewController: CMLazyScrollViewController) -> Int {
+    func numberOfViewControllersIn(scrollViewController: CMLazyScrollViewController) -> Int {
         return 5
     }
 
-    func viewInCarousel(scrollViewController: CMLazyScrollViewController, index: Int) -> UIViewController {
+    func viewControllerIn(scrollViewController: CMLazyScrollViewController, atIndex: Int) -> UIViewController {
         var vc : UIViewController = UIViewController()
-         if (index == 0) {
+         if (atIndex == 0) {
             vc = switchVC
          } else {
             vc = ImageViewController()
@@ -52,7 +52,7 @@ class ViewController: UIViewController, CMLazyScrollViewControllerDelegate, UISc
 
     func newImageBasename(imagebasename: String) {
         self.imageBasename = imagebasename
-        self.carousel.reloadCarousel()
+        self.carousel.reload()
     }
 }
 
