@@ -45,7 +45,7 @@ class ViewController: UIViewController, CMLazyScrollViewControllerDelegate, UISc
             vc = switchVC
          } else {
             vc = ImageViewController()
-            (vc as? ImageViewController)!.imageName = "\(self.imageBasename)\(index).jpg"
+            (vc as? ImageViewController)!.imageName = "\(self.imageBasename)\(atIndex).jpg"
         }
         return vc
     }
