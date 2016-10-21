@@ -1,0 +1,6 @@
+framework module CMLazyScrollViewController {
+  umbrella header "CMLazyScrollViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

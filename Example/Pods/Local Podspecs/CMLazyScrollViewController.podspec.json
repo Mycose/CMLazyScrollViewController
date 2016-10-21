@@ -1,0 +1,22 @@
+{
+  "name": "CMLazyScrollViewController",
+  "version": "0.1.0",
+  "summary": "A short description of CMLazyScrollViewController.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/CMLazyScrollViewController",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Clément Morissard": "morissard@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Mycose/CMLazyScrollViewController.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CMLazyScrollViewController/Classes/**/*"
+}

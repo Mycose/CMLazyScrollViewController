@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CMLazyScrollViewController_Example' do
+  pod 'CMLazyScrollViewController', :path => '../'
+
+  target 'CMLazyScrollViewController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

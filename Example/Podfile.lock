@@ -1,0 +1,16 @@
+PODS:
+  - CMLazyScrollViewController (0.1.0)
+
+DEPENDENCIES:
+  - CMLazyScrollViewController (from `../`)
+
+EXTERNAL SOURCES:
+  CMLazyScrollViewController:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CMLazyScrollViewController: fd759ce3db68ba0fa532447ba6bb3532aa2b8f98
+
+PODFILE CHECKSUM: 082c2de6f79bfda0f5c16d0e453867ea864d1b62
+
+COCOAPODS: 1.1.1
