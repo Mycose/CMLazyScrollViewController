@@ -234,6 +234,10 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         super.init(coder: aDecoder)
     }
 
+    override public func viewWillAppear(_ animated: Bool) {
+        //NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         let bundle = Bundle(for: type(of: self))
         let nib = "CMLazyScrollViewController"
@@ -359,4 +363,22 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
         self.scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
+
+    public func screenDidRotate() {
+        self.pageSize = self.view.frame.size
+        let width = (self.scrollDirection == .Horizontal) ? CGFloat(self.numberOfViews)*self.pageSize.width : self.pageSize.width
+        let height = (self.scrollDirection == .Horizontal) ? self.pageSize.height : CGFloat(self.numberOfViews)*self.pageSize.height
+        self.scrollView.contentSize = CGSize(width: width, height: height)
+
+        for vc in self.viewsInCache {
+            if let vc = vc {
+                let index : Int = vc.view.tag
+                let x : CGFloat = (self.scrollDirection == .Horizontal) ? CGFloat(index)*self.pageSize.width : 0.0
+                let y : CGFloat = (self.scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*self.pageSize.height
+                vc.view.frame = CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height)
+            }
+        }
+        self.setCurrentPage(newValue: self.currentIndex, animated: false)
+    }
 }
+
