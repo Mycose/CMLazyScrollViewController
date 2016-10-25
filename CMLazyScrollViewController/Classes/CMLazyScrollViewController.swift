@@ -34,8 +34,10 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
-    // used to store views
+    // used to store view controllers
     fileprivate var viewControllers : [UIViewController?] = []
+    // used to store views
+    fileprivate var views : [UIView?] = []
 
     fileprivate var targetContentOffset : CGPoint?
 
@@ -137,6 +139,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
             let height = (self.scrollDirection == .Horizontal) ? self.pageSize.height : CGFloat(self.numberOfViews)*self.pageSize.height
             self.scrollView.contentSize = CGSize(width: width, height: height)
             self.viewControllers = Array(repeating: nil, count: self.numberOfViews)
+            self.views = Array(repeating: nil, count: self.numberOfViews)
 
 
             let x = (self.infinite == true && self.scrollDirection == .Horizontal) ? self.pageSize.width : 0
@@ -167,9 +170,11 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         let y : CGFloat = (self.scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*self.pageSize.height
         // TODO: fix the fact that i need a view to not loose bg color ?
         let view = UIView(frame: CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height))
+        view.tag = index
         view.addSubview(vc.view)
 
         self.scrollView.addSubview(view)
+        self.views[index] = view
         self.viewControllers[index] = vc
         vc.didMove(toParentViewController: self)
     }
@@ -210,20 +215,23 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
     fileprivate func cleanArray() {
         for i in 0..<self.viewControllers.count {
-            if let vc = self.viewControllers[i] {
+            if let vc = self.viewControllers[i], let view = self.views[i] {
+                view.removeFromSuperview()
                 vc.view.removeFromSuperview()
                 vc.removeFromParentViewController()
                 self.viewControllers[i] = nil
+                self.views[i] = nil
             }
         }
     }
 
     fileprivate func clearSlot(index : Int) {
-        if let vc = self.viewControllers[index] {
+        if let vc = self.viewControllers[index], let view = self.views[index] {
             vc.view.removeFromSuperview()
             vc.removeFromParentViewController()
             if self.isLazy == true {
                 self.viewControllers[index] = nil
+                self.views[index] = nil
             }
         }
     }
@@ -235,7 +243,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     override public func viewWillAppear(_ animated: Bool) {
-        //NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -248,6 +256,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         self.viewControllers.removeAll()
+        self.views.removeAll()
     }
 
     // MARK: - SCROLLVIEWDELEGATE
@@ -370,12 +379,12 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         let height = (self.scrollDirection == .Horizontal) ? self.pageSize.height : CGFloat(self.numberOfViews)*self.pageSize.height
         self.scrollView.contentSize = CGSize(width: width, height: height)
 
-        for vc in self.viewControllers {
-            if let vc = vc {
-                let index : Int = vc.view.tag
+        for view in self.views {
+            if let view = view {
+                let index : Int = view.tag
                 let x : CGFloat = (self.scrollDirection == .Horizontal) ? CGFloat(index)*self.pageSize.width : 0.0
                 let y : CGFloat = (self.scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*self.pageSize.height
-                vc.view.frame = CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height)
+                view.frame = CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height)
             }
         }
         self.setCurrentPage(newValue: self.currentIndex, animated: false)
