@@ -22,6 +22,7 @@ class ViewController: UIViewController, CMLazyScrollViewControllerDelegate, UISc
         // Do any additional setup after loading the view, typically from a nib.
 
         carousel.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        carousel.scrollDirection = .Vertical
         carousel.infinite = true
         carousel.isPagingEnable = true
         carousel.delegate = self
