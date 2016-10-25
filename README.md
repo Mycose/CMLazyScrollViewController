@@ -5,6 +5,15 @@
 [![License](https://img.shields.io/cocoapods/l/CMLazyScrollViewController.svg?style=flat)](http://cocoapods.org/pods/CMLazyScrollViewController)
 [![Platform](https://img.shields.io/cocoapods/p/CMLazyScrollViewController.svg?style=flat)](http://cocoapods.org/pods/CMLazyScrollViewController)
 
+## Changes
+
+v0.0.2 (WIP)
+- Vertical Scroll Support (almost done, just a little bug to fix)
+- Rotation Support (Done, will be in 0.0.2)
+
+v0.0.1
+- Draft version
+
 ## CMLazyScrollViewController
 CMLazyScrollViewController is a UIViewController which has a UIScrollView and UIPageControl.
 The delegation of the CMLazyScrollViewController ask for UIViewController to put in the scroll view on a page system
