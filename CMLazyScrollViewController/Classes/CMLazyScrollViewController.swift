@@ -35,7 +35,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     // used to store views
-    fileprivate var viewsInCache : [UIViewController?] = []
+    fileprivate var viewControllers : [UIViewController?] = []
 
     fileprivate var targetContentOffset : CGPoint?
 
@@ -63,7 +63,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // get view controller at index, can return nil if view controller never created are not in stored anymore
     public func viewController(atIndex : Int) -> UIViewController? {
         if atIndex > 0 && atIndex < self.numberOfViews {
-            return self.viewsInCache[atIndex]
+            return self.viewControllers[atIndex]
         }
         return nil
     }
@@ -136,7 +136,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
             let width = (self.scrollDirection == .Horizontal) ? CGFloat(self.numberOfViews)*self.pageSize.width : self.pageSize.width
             let height = (self.scrollDirection == .Horizontal) ? self.pageSize.height : CGFloat(self.numberOfViews)*self.pageSize.height
             self.scrollView.contentSize = CGSize(width: width, height: height)
-            self.viewsInCache = Array(repeating: nil, count: self.numberOfViews)
+            self.viewControllers = Array(repeating: nil, count: self.numberOfViews)
 
 
             let x = (self.infinite == true && self.scrollDirection == .Horizontal) ? self.pageSize.width : 0
@@ -153,8 +153,8 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         let fixedIndex = self.fixIndex(index: index)
         var vc : UIViewController!
 
-        if self.viewsInCache[index] != nil {
-            vc = self.viewsInCache[index]!
+        if self.viewControllers[index] != nil {
+            vc = self.viewControllers[index]!
         } else {
             vc = self.delegate?.viewControllerIn(scrollViewController: self, atIndex: fixedIndex) ?? UIViewController()
         }
@@ -170,7 +170,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         view.addSubview(vc.view)
 
         self.scrollView.addSubview(view)
-        self.viewsInCache[index] = vc
+        self.viewControllers[index] = vc
         vc.didMove(toParentViewController: self)
     }
 
@@ -209,21 +209,21 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     fileprivate func cleanArray() {
-        for i in 0..<self.viewsInCache.count {
-            if let vc = self.viewsInCache[i] {
+        for i in 0..<self.viewControllers.count {
+            if let vc = self.viewControllers[i] {
                 vc.view.removeFromSuperview()
                 vc.removeFromParentViewController()
-                self.viewsInCache[i] = nil
+                self.viewControllers[i] = nil
             }
         }
     }
 
     fileprivate func clearSlot(index : Int) {
-        if let vc = self.viewsInCache[index] {
+        if let vc = self.viewControllers[index] {
             vc.view.removeFromSuperview()
             vc.removeFromParentViewController()
             if self.isLazy == true {
-                self.viewsInCache[index] = nil
+                self.viewControllers[index] = nil
             }
         }
     }
@@ -247,7 +247,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        self.viewsInCache.removeAll()
+        self.viewControllers.removeAll()
     }
 
     // MARK: - SCROLLVIEWDELEGATE
@@ -370,7 +370,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         let height = (self.scrollDirection == .Horizontal) ? self.pageSize.height : CGFloat(self.numberOfViews)*self.pageSize.height
         self.scrollView.contentSize = CGSize(width: width, height: height)
 
-        for vc in self.viewsInCache {
+        for vc in self.viewControllers {
             if let vc = vc {
                 let index : Int = vc.view.tag
                 let x : CGFloat = (self.scrollDirection == .Horizontal) ? CGFloat(index)*self.pageSize.width : 0.0
