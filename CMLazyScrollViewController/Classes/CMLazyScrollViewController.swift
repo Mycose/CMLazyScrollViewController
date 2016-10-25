@@ -281,20 +281,16 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     fileprivate func checkDidScrollInfiniteModeWithY(scrollView: UIScrollView) {
         let rest = scrollView.contentOffset.y.truncatingRemainder(dividingBy: self.pageSize.height)
         if (self.currentIndex == self.numberOfViews-1) {
-            print("did scroll premier if rest = \(rest)")
             self.scrollView.scrollRectToVisible(CGRect(x: 0, y: rest, width: self.pageSize.width, height: self.pageSize.height), animated: false)
             if let _ = self.targetContentOffset {
-                print("did scroll second if = \(self.pageSize.height)")
                 self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.pageSize.height, width: self.pageSize.width, height: self.pageSize.height), animated: true)
             }
             self.targetContentOffset = nil
         } else if (self.currentIndex == 0 && (self.lastScrollViewOffset != nil) && (self.lastScrollViewOffset!.y > scrollView.contentOffset.y)) {
-            print("did scroll else if")
             self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.scrollView.contentSize.height-(self.pageSize.height*2)+rest, width: self.pageSize.width, height: self.pageSize.height), animated: false)
 
             // targetcontentoffset is set at the end draging event and allow to finish the movement after the scrollrecttovisible
             if let _ = self.targetContentOffset {
-                print("did scroll if dans else if")
                 self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.scrollView.contentSize.height-(self.pageSize.height), width: self.pageSize.width, height: self.pageSize.height), animated: true)
             }
             self.targetContentOffset = nil
