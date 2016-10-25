@@ -168,7 +168,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
         let x : CGFloat = (self.scrollDirection == .Horizontal) ? CGFloat(index)*self.pageSize.width : 0.0
         let y : CGFloat = (self.scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*self.pageSize.height
-        // TODO: fix the fact that i need a view to not loose bg color ?
+        // TODO: if i dont use a view here the constraint from the vc.view will break because of the scrollView, i tried to do some autolayout with the views i added but no success :(
         let view = UIView(frame: CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height))
         view.tag = index
         view.addSubview(vc.view)
