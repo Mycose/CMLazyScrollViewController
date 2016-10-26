@@ -70,6 +70,17 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         return nil
     }
 
+    // true if it should rotate and detect rotation
+    public var canRotate : Bool = true {
+        didSet {
+            if self.canRotate == true {
+                NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+            } else {
+                NotificationCenter.default.removeObserver(self)
+            }
+        }
+    }
+
     // if false it will be vertical
     public var scrollDirection : CMLazyScrollViewDirection = .Horizontal
 
@@ -240,10 +251,6 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // MARK: - UIVIEWCONTROLLER OVERRIDE
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    override public func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
