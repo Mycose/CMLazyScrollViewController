@@ -71,7 +71,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     // true if it should rotate and detect rotation
-    public var canRotate : Bool = true {
+    public var canRotate : Bool = false {
         didSet {
             if self.canRotate == true {
                 NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
