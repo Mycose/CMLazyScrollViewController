@@ -9,10 +9,11 @@
 
 Future
 - Custom UIPageControl
-- UIPageControl left/right/top or bot
+- Smoothen the animation when you end dragging on infinite mode without pagging
 - Any ideas or request ?
 
 v0.0.2 (WIP)
+- UIPageControl left/right/top or bot (Done for top/bot)
 - Vertical Scroll Support (almost done, just a little bug to fix)
 - Rotation Support (Done, will be in 0.0.2)
 
