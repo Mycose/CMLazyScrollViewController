@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMLazyScrollViewController" customModule="CMLazyScrollViewController" customModuleProvider="target">
             <connections>
                 <outlet property="pageControl" destination="BCA-LK-LNc" id="3Qm-x8-iGy"/>
+                <outlet property="pageControlBottomConstraint" destination="48h-zs-dYa" id="rP5-ac-0Yo"/>
                 <outlet property="scrollView" destination="Rf1-V0-KPl" id="DHc-pZ-RXU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="vom-xG-rAV"/>
             </connections>

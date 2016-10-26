@@ -8,6 +8,15 @@
 
 import UIKit
 
+struct Constants {
+    static let pageControlHeightConstraintValue : CGFloat = 40.0
+}
+
+public enum CMPageControlPosition {
+    case Top
+    case Bottom
+}
+
 public enum CMLazyScrollViewDirection {
     case Vertical
     case Horizontal
@@ -19,6 +28,9 @@ public protocol CMLazyScrollViewControllerDelegate : class {
 }
 
 public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate {
+
+    // MARK: - PageControl Constraints
+    @IBOutlet fileprivate var pageControlBottomConstraint : NSLayoutConstraint!
 
     // MARK: - PRIVATE IBOUTLET
     @IBOutlet fileprivate var pageControl : UIPageControl!
@@ -81,8 +93,20 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
+    public var pageControlPaddingValue : CGFloat = 38.0 {
+        didSet {
+            self.refreshPageControlConstraint()
+        }
+    }
+
     // if false it will be vertical
     public var scrollDirection : CMLazyScrollViewDirection = .Horizontal
+
+    public var pageControlPosition : CMPageControlPosition = .Bottom {
+        didSet {
+            self.refreshPageControlConstraint()
+        }
+    }
 
     // view controllers will be instantiated only once if true
     // if it's false, there will only be 3 per 3 view controllers in the memory (current, previous and next)
@@ -248,36 +272,6 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
 
-    // MARK: - UIVIEWCONTROLLER OVERRIDE
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        let bundle = Bundle(for: type(of: self))
-        let nib = "CMLazyScrollViewController"
-        super.init(nibName: nib, bundle: bundle)
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        self.viewControllers.removeAll()
-        self.views.removeAll()
-    }
-
-    // MARK: - SCROLLVIEWDELEGATE
-
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if (self.currentIndex-2 >= 0) {
-            self.clearSlot(index: self.currentIndex-2)
-        }
-        if (self.currentIndex+2 < self.numberOfViews-1) {
-            self.clearSlot(index: self.currentIndex+2)
-        }
-        self.scrollDelegate?.scrollViewDidEndDecelerating?(scrollView)
-    }
-
     fileprivate func checkDidScrollInfiniteModeWithX(scrollView: UIScrollView) {
         let rest = scrollView.contentOffset.x.truncatingRemainder(dividingBy: self.pageSize.width)
         if (self.currentIndex == self.numberOfViews-1) {
@@ -311,10 +305,52 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
             // targetcontentoffset is set at the end draging event and allow to finish the movement after the scrollrecttovisible
             if let _ = self.targetContentOffset {
-                self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.scrollView.contentSize.height-(self.pageSize.height), width: self.pageSize.width, height: self.pageSize.height), animated: true)
+                self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.scrollView.contentSize.height-(self.pageSize.height*2), width: self.pageSize.width, height: self.pageSize.height), animated: true)
             }
             self.targetContentOffset = nil
         }
+    }
+
+    fileprivate func refreshPageControlConstraint() {
+        switch self.pageControlPosition {
+        case .Top:
+            self.pageControlBottomConstraint.constant = self.view.frame.height - (self.pageControlPaddingValue + Constants.pageControlHeightConstraintValue)
+            break
+        case .Bottom:
+            self.pageControlBottomConstraint.constant = self.pageControlPaddingValue
+            break
+        }
+    }
+
+
+    // MARK: - UIVIEWCONTROLLER OVERRIDE
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        let bundle = Bundle(for: type(of: self))
+        let nib = "CMLazyScrollViewController"
+        super.init(nibName: nib, bundle: bundle)
+    }
+
+    override public func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        self.viewControllers.removeAll()
+        self.views.removeAll()
+    }
+
+    // MARK: - SCROLLVIEWDELEGATE
+
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (self.currentIndex-2 >= 0) {
+            self.clearSlot(index: self.currentIndex-2)
+        }
+        if (self.currentIndex+2 < self.numberOfViews-1) {
+            self.clearSlot(index: self.currentIndex+2)
+        }
+        self.scrollDelegate?.scrollViewDidEndDecelerating?(scrollView)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
