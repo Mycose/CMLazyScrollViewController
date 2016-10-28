@@ -1,6 +1,5 @@
 # CMLazyScrollViewController
 
-[![CI Status](http://img.shields.io/travis/Mycose/CMLazyScrollViewController.svg?style=flat)](https://travis-ci.org/Mycose/CMLazyScrollViewController)
 [![Version](https://img.shields.io/cocoapods/v/CMLazyScrollViewController.svg?style=flat)](http://cocoapods.org/pods/CMLazyScrollViewController)
 [![License](https://img.shields.io/cocoapods/l/CMLazyScrollViewController.svg?style=flat)](http://cocoapods.org/pods/CMLazyScrollViewController)
 [![Platform](https://img.shields.io/cocoapods/p/CMLazyScrollViewController.svg?style=flat)](http://cocoapods.org/pods/CMLazyScrollViewController)
