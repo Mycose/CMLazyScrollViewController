@@ -5,6 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/CMLazyScrollViewController.svg?style=flat)](http://cocoapods.org/pods/CMLazyScrollViewController)
 [![Platform](https://img.shields.io/cocoapods/p/CMLazyScrollViewController.svg?style=flat)](http://cocoapods.org/pods/CMLazyScrollViewController)
 
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+or 
+https://appetize.io/app/qcb2rwc82uu53thuy2efvez6hr?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3
+
 ## Changes
 
 Future
