@@ -1,0 +1,6 @@
+framework module CMPageControl {
+  umbrella header "CMPageControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

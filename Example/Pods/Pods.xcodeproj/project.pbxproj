@@ -7,87 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		046115F5FD6A470F73BD3764578878F3 /* CMLazyScrollViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D24203A66B151B40D2B429FBA2AF52E0 /* CMLazyScrollViewController-dummy.m */; };
-		20E814D809B71DD3ED673DB686087F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		276C6E6913A3196F06005824A203AD7C /* CMLazyScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7703DA2BBB770FA21866DF6D7052B /* CMLazyScrollViewController.swift */; };
-		835EC95D9408DB37DD52C0371A2B76CD /* Pods-CMLazyScrollViewController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B002DD4495DE481A5090419715F5200D /* Pods-CMLazyScrollViewController_Example-dummy.m */; };
-		963BD1502F3B05C9CCC53529D69304D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		96DA26D09FB99AB7E08F91E8488C690D /* Pods-CMLazyScrollViewController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EBAF5F9ED2CE4CF5AE3F0CE57B9441C /* Pods-CMLazyScrollViewController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		979DA3D58B15182FCCD63CDDA1B6EE62 /* CMLazyScrollViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 341859EF2EBE5E04E18413856D506CB9 /* CMLazyScrollViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4AB30A000E1D7AD615127183F120050 /* Pods-CMLazyScrollViewController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3242A5A40E2AB59719A83FF8B182D0C /* Pods-CMLazyScrollViewController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B5DBA48A585DF143915502D0A031CBC5 /* Pods-CMLazyScrollViewController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5014DAD841A61A89C2F2AAD187929A8F /* Pods-CMLazyScrollViewController_Tests-dummy.m */; };
-		C2C1DF3436B9A4CD43C1E07CE562C410 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		E37E4C136D881ABC493832F0B3DEEDE1 /* CMLazyScrollViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 67099647C84337545A4253AA89332C11 /* CMLazyScrollViewController.xib */; };
+		0E8020A8FAB10C9039BBA8D2CBF5E4A6 /* CMPageControl-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D7F3F77A33701CA7DFABF9EFD2A959A7 /* CMPageControl-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2989D04D376275EE1E856314ED30EA6E /* CMLazyScrollViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D24203A66B151B40D2B429FBA2AF52E0 /* CMLazyScrollViewController-dummy.m */; };
+		3112B71D731306793913BC5280D570C2 /* CMPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE063CD89F67F76330B794389955172 /* CMPageControl.swift */; };
+		3800ADCB8350DBD02CCA7CE804FBC24C /* Pods-CMLazyScrollViewController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B002DD4495DE481A5090419715F5200D /* Pods-CMLazyScrollViewController_Example-dummy.m */; };
+		4A8568AA428B235FE4AB070975F4C623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467952863F68C577E7CD5AD43BD05392 /* Foundation.framework */; };
+		50234EE3E492ADB6CF607323A9A3AEEC /* Pods-CMLazyScrollViewController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3242A5A40E2AB59719A83FF8B182D0C /* Pods-CMLazyScrollViewController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		583F698255BD44ABA068F9995DB37421 /* CMLazyScrollViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 341859EF2EBE5E04E18413856D506CB9 /* CMLazyScrollViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		59F61C12D0550D6F78CFC04D9BA33A59 /* CMPageControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DBC864E2252C66AD92933EED1346CB9 /* CMPageControl-dummy.m */; };
+		5C206352D342D38F30D9C2D26A35BEF0 /* CMLazyScrollViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 67099647C84337545A4253AA89332C11 /* CMLazyScrollViewController.xib */; };
+		8ABD85C7C7F339EF744EA247D55C9838 /* Pods-CMLazyScrollViewController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EBAF5F9ED2CE4CF5AE3F0CE57B9441C /* Pods-CMLazyScrollViewController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E508323F9578340FBB235F12805F686 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467952863F68C577E7CD5AD43BD05392 /* Foundation.framework */; };
+		B4B6EF23A7B725AB7A3FEDCFDEBDCF74 /* CMPageControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A0DDE2FB5DFE1144B5E5C1E928D089 /* CMPageControl.framework */; };
+		C528A33A0FE4BE4225D0F288B57CFDC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467952863F68C577E7CD5AD43BD05392 /* Foundation.framework */; };
+		E0BEA654CD6B78D7D700A784638014BB /* Pods-CMLazyScrollViewController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5014DAD841A61A89C2F2AAD187929A8F /* Pods-CMLazyScrollViewController_Tests-dummy.m */; };
+		EF999BAD9E280185A89738E4135EE63E /* CMLazyScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7703DA2BBB770FA21866DF6D7052B /* CMLazyScrollViewController.swift */; };
+		F7CA5FB7735D9A43F653D2DCF60BA786 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467952863F68C577E7CD5AD43BD05392 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F46B974D01D4470A2CCF1030A0006060 /* PBXContainerItemProxy */ = {
+		1974DC8CA8B1DF4A40A0FDA27D7F60F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E4F1D26498034A519ECD63940D15F2FC;
+			remoteGlobalIDString = 9E29761910F81696F4C2A49E10D05BC8;
+			remoteInfo = CMPageControl;
+		};
+		94349FE01FDCEDBDBFC9291DEDA4A46D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E29761910F81696F4C2A49E10D05BC8;
+			remoteInfo = CMPageControl;
+		};
+		C231F92D07A8814A82E3D8E92A67CAA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CB4A225E0DD15C229EC0BB93916E7EB;
 			remoteInfo = CMLazyScrollViewController;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09BFE4932D290B24D3132CDB3FD598DE /* CMLazyScrollViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CMLazyScrollViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E36BFAFAEF84D5308DC3E77DB26880D /* Pods_CMLazyScrollViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMLazyScrollViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		218FA2C2AE3364B91F8A297ED4D0CCF5 /* CMLazyScrollViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CMLazyScrollViewController.xcconfig; sourceTree = "<group>"; };
 		228696F9982DFDB6D058A5B008C43B62 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25E3926DE54D391DD67E15E17E9D168A /* Pods-CMLazyScrollViewController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CMLazyScrollViewController_Example-frameworks.sh"; sourceTree = "<group>"; };
-		25F89DDDEA8B30BF9E4308422611C344 /* Pods_CMLazyScrollViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMLazyScrollViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29A0DDE2FB5DFE1144B5E5C1E928D089 /* CMPageControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CMPageControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A00744AACB746F662546AF38FBE3D5A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		341859EF2EBE5E04E18413856D506CB9 /* CMLazyScrollViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CMLazyScrollViewController-umbrella.h"; sourceTree = "<group>"; };
 		34F7703DA2BBB770FA21866DF6D7052B /* CMLazyScrollViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CMLazyScrollViewController.swift; sourceTree = "<group>"; };
+		364C44BE7D93B7EF3679F70DB0A4B03E /* CMPageControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CMPageControl.framework; path = CMPageControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		467952863F68C577E7CD5AD43BD05392 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5014DAD841A61A89C2F2AAD187929A8F /* Pods-CMLazyScrollViewController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CMLazyScrollViewController_Tests-dummy.m"; sourceTree = "<group>"; };
-		57B0CC0B17407C6D0CBAD45AB23A9274 /* Pods-CMLazyScrollViewController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CMLazyScrollViewController_Example.modulemap"; sourceTree = "<group>"; };
+		51739B1A76DD471971ADAF096B3B1BE7 /* CMLazyScrollViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CMLazyScrollViewController.framework; path = CMLazyScrollViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57B0CC0B17407C6D0CBAD45AB23A9274 /* Pods-CMLazyScrollViewController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CMLazyScrollViewController_Example.modulemap"; sourceTree = "<group>"; };
 		62950C87B8656980F48C7852DCC9910D /* Pods-CMLazyScrollViewController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CMLazyScrollViewController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		64E4C9C6594CE581C70A3897D8537C8E /* Pods-CMLazyScrollViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMLazyScrollViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		67099647C84337545A4253AA89332C11 /* CMLazyScrollViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CMLazyScrollViewController.xib; sourceTree = "<group>"; };
+		6DBC864E2252C66AD92933EED1346CB9 /* CMPageControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CMPageControl-dummy.m"; sourceTree = "<group>"; };
+		770939A160CB1773ABA5C08CB921C3A9 /* CMPageControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CMPageControl.modulemap; sourceTree = "<group>"; };
 		78E82D8D406699D792229F131E1F7E91 /* Pods-CMLazyScrollViewController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CMLazyScrollViewController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7C42E9DCC229263900D57BC3DF2437EF /* Pods_CMLazyScrollViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CMLazyScrollViewController_Tests.framework; path = "Pods-CMLazyScrollViewController_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F55AEBA007BB5839CE478E2CD7D2597 /* Pods-CMLazyScrollViewController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMLazyScrollViewController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EBAF5F9ED2CE4CF5AE3F0CE57B9441C /* Pods-CMLazyScrollViewController_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CMLazyScrollViewController_Example-umbrella.h"; sourceTree = "<group>"; };
 		8FACB8B9C2BB6D339892E33594366371 /* Pods-CMLazyScrollViewController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CMLazyScrollViewController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93AD4BA5266A5F96824216969A165BC7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9868BE4026CC5D38C8CD7C4BA367D60F /* CMLazyScrollViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CMLazyScrollViewController.modulemap; sourceTree = "<group>"; };
+		9868BE4026CC5D38C8CD7C4BA367D60F /* CMLazyScrollViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CMLazyScrollViewController.modulemap; sourceTree = "<group>"; };
+		9AE063CD89F67F76330B794389955172 /* CMPageControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CMPageControl.swift; path = CMPageControl/Classes/CMPageControl.swift; sourceTree = "<group>"; };
 		A0789851189C72E4316BD7EF86B30B97 /* Pods-CMLazyScrollViewController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CMLazyScrollViewController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A6FC630588435F689F9524A8EAB1F39A /* Pods-CMLazyScrollViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMLazyScrollViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B002DD4495DE481A5090419715F5200D /* Pods-CMLazyScrollViewController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CMLazyScrollViewController_Example-dummy.m"; sourceTree = "<group>"; };
 		B016D384909070C8415B4F2610A755D2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4D68BF9E6C7784A588657F97ECF86D0 /* Pods-CMLazyScrollViewController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CMLazyScrollViewController_Tests.modulemap"; sourceTree = "<group>"; };
+		B4D68BF9E6C7784A588657F97ECF86D0 /* Pods-CMLazyScrollViewController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CMLazyScrollViewController_Tests.modulemap"; sourceTree = "<group>"; };
 		BB9CFF7AB748DA9CC7B6F687093BA5CB /* CMLazyScrollViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CMLazyScrollViewController-prefix.pch"; sourceTree = "<group>"; };
+		C0F4A1B84382819F29030E6375DD3C8A /* Pods_CMLazyScrollViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CMLazyScrollViewController_Example.framework; path = "Pods-CMLazyScrollViewController_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61E8EF37ACC16B50791C93DFB08618E /* Pods-CMLazyScrollViewController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CMLazyScrollViewController_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		C62017F02F1A4B41B4F4969238678B82 /* Pods-CMLazyScrollViewController_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CMLazyScrollViewController_Example-resources.sh"; sourceTree = "<group>"; };
 		CB2CB7718B1CF1E89AFD78646622721F /* Pods-CMLazyScrollViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CMLazyScrollViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CE1F81D12D01C69620A579A43F703859 /* CMPageControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CMPageControl-prefix.pch"; sourceTree = "<group>"; };
 		D24203A66B151B40D2B429FBA2AF52E0 /* CMLazyScrollViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CMLazyScrollViewController-dummy.m"; sourceTree = "<group>"; };
+		D7F3F77A33701CA7DFABF9EFD2A959A7 /* CMPageControl-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CMPageControl-umbrella.h"; sourceTree = "<group>"; };
 		DBD7A050E34906A9BC4A2D4DE38707B3 /* Pods-CMLazyScrollViewController_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CMLazyScrollViewController_Tests-resources.sh"; sourceTree = "<group>"; };
 		E3242A5A40E2AB59719A83FF8B182D0C /* Pods-CMLazyScrollViewController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CMLazyScrollViewController_Tests-umbrella.h"; sourceTree = "<group>"; };
+		F0061174CBE0F592AC8E081E6586461F /* CMPageControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CMPageControl.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		029C14AC33001B002CE65FF022184714 /* Frameworks */ = {
+		052A50F7C978D6E571F63072B1C8F858 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E814D809B71DD3ED673DB686087F5D /* Foundation.framework in Frameworks */,
+				C528A33A0FE4BE4225D0F288B57CFDC7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22B27ACBEE9EC2079EAFBA9BAF22D206 /* Frameworks */ = {
+		94CAB99B3A5AFC26C71A221058B9D466 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				963BD1502F3B05C9CCC53529D69304D8 /* Foundation.framework in Frameworks */,
+				B4B6EF23A7B725AB7A3FEDCFDEBDCF74 /* CMPageControl.framework in Frameworks */,
+				F7CA5FB7735D9A43F653D2DCF60BA786 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		29ADA8B5D9467E45E8BF7D548986DB0F /* Frameworks */ = {
+		A85D3AFD8777D09261A6591563EBA281 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2C1DF3436B9A4CD43C1E07CE562C410 /* Foundation.framework in Frameworks */,
+				8E508323F9578340FBB235F12805F686 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE3A3515CB2F521C149278AC2B07B80A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A8568AA428B235FE4AB070975F4C623 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,17 +151,8 @@
 				34F7703DA2BBB770FA21866DF6D7052B /* CMLazyScrollViewController.swift */,
 				67099647C84337545A4253AA89332C11 /* CMLazyScrollViewController.xib */,
 			);
+			name = Classes;
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		2D09E4511F986FB4555F3ACBB3A84CEC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				09BFE4932D290B24D3132CDB3FD598DE /* CMLazyScrollViewController.framework */,
-				1E36BFAFAEF84D5308DC3E77DB26880D /* Pods_CMLazyScrollViewController_Example.framework */,
-				25F89DDDEA8B30BF9E4308422611C344 /* Pods_CMLazyScrollViewController_Tests.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		47962A53BB318CFD92A153A9023C0A26 /* Targets Support Files */ = {
@@ -134,6 +162,16 @@
 				84EA1EC6453C135F1EF577A262B77B74 /* Pods-CMLazyScrollViewController_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		549FF51E167424D4E680F11B797FB719 /* CMPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				9AE063CD89F67F76330B794389955172 /* CMPageControl.swift */,
+				EC9D0186B46365D4BB74C9B732A2B108 /* Support Files */,
+			);
+			name = CMPageControl;
+			path = CMPageControl;
 			sourceTree = "<group>";
 		};
 		54ED7B09A6486A77C650884417BD5843 /* CMLazyScrollViewController */ = {
@@ -146,12 +184,12 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+		65984FB766BB583DCC4C316C30F571F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+				549FF51E167424D4E680F11B797FB719 /* CMPageControl */,
 			);
-			name = iOS;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7961BC420CC766F864537D642A0A5A69 /* Development Pods */ = {
@@ -167,8 +205,9 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				7961BC420CC766F864537D642A0A5A69 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				2D09E4511F986FB4555F3ACBB3A84CEC /* Products */,
+				9217439507B96D4BFB3B348D90FB04FD /* Frameworks */,
+				65984FB766BB583DCC4C316C30F571F3 /* Pods */,
+				A09031410B4E8DA01607E1FF23877847 /* Products */,
 				47962A53BB318CFD92A153A9023C0A26 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -191,20 +230,41 @@
 			path = "Target Support Files/Pods-CMLazyScrollViewController_Tests";
 			sourceTree = "<group>";
 		};
+		9217439507B96D4BFB3B348D90FB04FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29A0DDE2FB5DFE1144B5E5C1E928D089 /* CMPageControl.framework */,
+				A186F0952CCFC6DEA38AF12CD87AD995 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		987B960CAFE5F11EFDACCB1B3D53E6D8 /* CMLazyScrollViewController */ = {
 			isa = PBXGroup;
 			children = (
 				206D00A613C80894350FBEE3B61688FA /* Classes */,
 			);
+			name = CMLazyScrollViewController;
 			path = CMLazyScrollViewController;
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		A09031410B4E8DA01607E1FF23877847 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+				51739B1A76DD471971ADAF096B3B1BE7 /* CMLazyScrollViewController.framework */,
+				364C44BE7D93B7EF3679F70DB0A4B03E /* CMPageControl.framework */,
+				C0F4A1B84382819F29030E6375DD3C8A /* Pods_CMLazyScrollViewController_Example.framework */,
+				7C42E9DCC229263900D57BC3DF2437EF /* Pods_CMLazyScrollViewController_Tests.framework */,
 			);
-			name = Frameworks;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A186F0952CCFC6DEA38AF12CD87AD995 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				467952863F68C577E7CD5AD43BD05392 /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		E15C73154CD23083A02D038AC35CCAC4 /* Pods-CMLazyScrollViewController_Example */ = {
@@ -225,61 +285,119 @@
 			path = "Target Support Files/Pods-CMLazyScrollViewController_Example";
 			sourceTree = "<group>";
 		};
+		EC9D0186B46365D4BB74C9B732A2B108 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				770939A160CB1773ABA5C08CB921C3A9 /* CMPageControl.modulemap */,
+				F0061174CBE0F592AC8E081E6586461F /* CMPageControl.xcconfig */,
+				6DBC864E2252C66AD92933EED1346CB9 /* CMPageControl-dummy.m */,
+				CE1F81D12D01C69620A579A43F703859 /* CMPageControl-prefix.pch */,
+				D7F3F77A33701CA7DFABF9EFD2A959A7 /* CMPageControl-umbrella.h */,
+				2A00744AACB746F662546AF38FBE3D5A /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CMPageControl";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		05EE1AEB6355B4BA37533FA7363900BE /* Headers */ = {
+		03C7A149E9F26167E52CFA7058F1858A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96DA26D09FB99AB7E08F91E8488C690D /* Pods-CMLazyScrollViewController_Example-umbrella.h in Headers */,
+				8ABD85C7C7F339EF744EA247D55C9838 /* Pods-CMLazyScrollViewController_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		81A3348EA5AC6C7C1A4016A7E37CD2B4 /* Headers */ = {
+		80CDA13C482217F54DD7964CE18D25EF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				979DA3D58B15182FCCD63CDDA1B6EE62 /* CMLazyScrollViewController-umbrella.h in Headers */,
+				583F698255BD44ABA068F9995DB37421 /* CMLazyScrollViewController-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8F05B93D8BB5EF268A408C4365E4863A /* Headers */ = {
+		E58E358F0DF69BE16771614AC6F30842 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4AB30A000E1D7AD615127183F120050 /* Pods-CMLazyScrollViewController_Tests-umbrella.h in Headers */,
+				0E8020A8FAB10C9039BBA8D2CBF5E4A6 /* CMPageControl-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF442642B3181E02E9ABC5EB9872E55F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50234EE3E492ADB6CF607323A9A3AEEC /* Pods-CMLazyScrollViewController_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7B9B2E5EFC6D89C686C70D0C823B2507 /* Pods-CMLazyScrollViewController_Example */ = {
+		264B02214184FDD34A5734F7776BDBC1 /* Pods-CMLazyScrollViewController_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF88BB6F5EF49275546000347940C2FC /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Example" */;
+			buildConfigurationList = 86DB7D1F1C256B8849308E5B7F9D165C /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Example" */;
 			buildPhases = (
-				1CA841F7C696C2557F2ADB864E827945 /* Sources */,
-				22B27ACBEE9EC2079EAFBA9BAF22D206 /* Frameworks */,
-				05EE1AEB6355B4BA37533FA7363900BE /* Headers */,
+				3FF4FEA1112E823EE4B2F32EF84BE561 /* Sources */,
+				EE3A3515CB2F521C149278AC2B07B80A /* Frameworks */,
+				03C7A149E9F26167E52CFA7058F1858A /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F4F12E6FC50EF96314B8558E2CCDD767 /* PBXTargetDependency */,
+				A6B340BEF0F6432846B39993EE2D178C /* PBXTargetDependency */,
+				5375B335A7ECAF3B9C4F90251AF3BC63 /* PBXTargetDependency */,
 			);
 			name = "Pods-CMLazyScrollViewController_Example";
 			productName = "Pods-CMLazyScrollViewController_Example";
-			productReference = 1E36BFAFAEF84D5308DC3E77DB26880D /* Pods_CMLazyScrollViewController_Example.framework */;
+			productReference = C0F4A1B84382819F29030E6375DD3C8A /* Pods_CMLazyScrollViewController_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A692B325A7E97FE792D5D20C151C8618 /* Pods-CMLazyScrollViewController_Tests */ = {
+		6CB4A225E0DD15C229EC0BB93916E7EB /* CMLazyScrollViewController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28B324BAC5FF3B3A2B8E1B7742F0A6A0 /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Tests" */;
+			buildConfigurationList = 8E616CEB5362E0A159C5A3AB01529577 /* Build configuration list for PBXNativeTarget "CMLazyScrollViewController" */;
 			buildPhases = (
-				BE37014CF4499747A4E3FB90B2C11135 /* Sources */,
-				29ADA8B5D9467E45E8BF7D548986DB0F /* Frameworks */,
-				8F05B93D8BB5EF268A408C4365E4863A /* Headers */,
+				53E306A9A37A4E6654BEF8F3C4BCFCA8 /* Sources */,
+				94CAB99B3A5AFC26C71A221058B9D466 /* Frameworks */,
+				80CDA13C482217F54DD7964CE18D25EF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				260FCC794B68D96ECD76973A59F40E53 /* PBXTargetDependency */,
+			);
+			name = CMLazyScrollViewController;
+			productName = CMLazyScrollViewController;
+			productReference = 51739B1A76DD471971ADAF096B3B1BE7 /* CMLazyScrollViewController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9E29761910F81696F4C2A49E10D05BC8 /* CMPageControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A7BCE8C5B84DFF77070DD27D41CBE28 /* Build configuration list for PBXNativeTarget "CMPageControl" */;
+			buildPhases = (
+				88C9C99CCC34C59E24D1149A498AC92B /* Sources */,
+				052A50F7C978D6E571F63072B1C8F858 /* Frameworks */,
+				E58E358F0DF69BE16771614AC6F30842 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CMPageControl;
+			productName = CMPageControl;
+			productReference = 364C44BE7D93B7EF3679F70DB0A4B03E /* CMPageControl.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BABAE1DA34FE12A042F973AFE96B9FD3 /* Pods-CMLazyScrollViewController_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23C3A3E939DFF9ABC1205F22B8BC4C16 /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Tests" */;
+			buildPhases = (
+				433E53DB9ED7987026447436B95F277F /* Sources */,
+				A85D3AFD8777D09261A6591563EBA281 /* Frameworks */,
+				EF442642B3181E02E9ABC5EB9872E55F /* Headers */,
 			);
 			buildRules = (
 			);
@@ -287,24 +405,7 @@
 			);
 			name = "Pods-CMLazyScrollViewController_Tests";
 			productName = "Pods-CMLazyScrollViewController_Tests";
-			productReference = 25F89DDDEA8B30BF9E4308422611C344 /* Pods_CMLazyScrollViewController_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E4F1D26498034A519ECD63940D15F2FC /* CMLazyScrollViewController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BA53DEA6779FB62CAA1371178A4C0286 /* Build configuration list for PBXNativeTarget "CMLazyScrollViewController" */;
-			buildPhases = (
-				8057904E19E98C0B04FB936AEA97A57D /* Sources */,
-				029C14AC33001B002CE65FF022184714 /* Frameworks */,
-				81A3348EA5AC6C7C1A4016A7E37CD2B4 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CMLazyScrollViewController;
-			productName = CMLazyScrollViewController;
-			productReference = 09BFE4932D290B24D3132CDB3FD598DE /* CMLazyScrollViewController.framework */;
+			productReference = 7C42E9DCC229263900D57BC3DF2437EF /* Pods_CMLazyScrollViewController_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -324,92 +425,79 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 2D09E4511F986FB4555F3ACBB3A84CEC /* Products */;
+			productRefGroup = A09031410B4E8DA01607E1FF23877847 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E4F1D26498034A519ECD63940D15F2FC /* CMLazyScrollViewController */,
-				7B9B2E5EFC6D89C686C70D0C823B2507 /* Pods-CMLazyScrollViewController_Example */,
-				A692B325A7E97FE792D5D20C151C8618 /* Pods-CMLazyScrollViewController_Tests */,
+				6CB4A225E0DD15C229EC0BB93916E7EB /* CMLazyScrollViewController */,
+				9E29761910F81696F4C2A49E10D05BC8 /* CMPageControl */,
+				264B02214184FDD34A5734F7776BDBC1 /* Pods-CMLazyScrollViewController_Example */,
+				BABAE1DA34FE12A042F973AFE96B9FD3 /* Pods-CMLazyScrollViewController_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1CA841F7C696C2557F2ADB864E827945 /* Sources */ = {
+		3FF4FEA1112E823EE4B2F32EF84BE561 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				835EC95D9408DB37DD52C0371A2B76CD /* Pods-CMLazyScrollViewController_Example-dummy.m in Sources */,
+				3800ADCB8350DBD02CCA7CE804FBC24C /* Pods-CMLazyScrollViewController_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8057904E19E98C0B04FB936AEA97A57D /* Sources */ = {
+		433E53DB9ED7987026447436B95F277F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046115F5FD6A470F73BD3764578878F3 /* CMLazyScrollViewController-dummy.m in Sources */,
-				276C6E6913A3196F06005824A203AD7C /* CMLazyScrollViewController.swift in Sources */,
-				E37E4C136D881ABC493832F0B3DEEDE1 /* CMLazyScrollViewController.xib in Sources */,
+				E0BEA654CD6B78D7D700A784638014BB /* Pods-CMLazyScrollViewController_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE37014CF4499747A4E3FB90B2C11135 /* Sources */ = {
+		53E306A9A37A4E6654BEF8F3C4BCFCA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5DBA48A585DF143915502D0A031CBC5 /* Pods-CMLazyScrollViewController_Tests-dummy.m in Sources */,
+				2989D04D376275EE1E856314ED30EA6E /* CMLazyScrollViewController-dummy.m in Sources */,
+				EF999BAD9E280185A89738E4135EE63E /* CMLazyScrollViewController.swift in Sources */,
+				5C206352D342D38F30D9C2D26A35BEF0 /* CMLazyScrollViewController.xib in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88C9C99CCC34C59E24D1149A498AC92B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59F61C12D0550D6F78CFC04D9BA33A59 /* CMPageControl-dummy.m in Sources */,
+				3112B71D731306793913BC5280D570C2 /* CMPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F4F12E6FC50EF96314B8558E2CCDD767 /* PBXTargetDependency */ = {
+		260FCC794B68D96ECD76973A59F40E53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CMPageControl;
+			target = 9E29761910F81696F4C2A49E10D05BC8 /* CMPageControl */;
+			targetProxy = 1974DC8CA8B1DF4A40A0FDA27D7F60F4 /* PBXContainerItemProxy */;
+		};
+		5375B335A7ECAF3B9C4F90251AF3BC63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CMPageControl;
+			target = 9E29761910F81696F4C2A49E10D05BC8 /* CMPageControl */;
+			targetProxy = 94349FE01FDCEDBDBFC9291DEDA4A46D /* PBXContainerItemProxy */;
+		};
+		A6B340BEF0F6432846B39993EE2D178C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CMLazyScrollViewController;
-			target = E4F1D26498034A519ECD63940D15F2FC /* CMLazyScrollViewController */;
-			targetProxy = F46B974D01D4470A2CCF1030A0006060 /* PBXContainerItemProxy */;
+			target = 6CB4A225E0DD15C229EC0BB93916E7EB /* CMLazyScrollViewController */;
+			targetProxy = C231F92D07A8814A82E3D8E92A67CAA2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		07D9985C00A8B95CF77AEE8090FE85EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64E4C9C6594CE581C70A3897D8537C8E /* Pods-CMLazyScrollViewController_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Pods-CMLazyScrollViewController_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CMLazyScrollViewController_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1C359E2D1EED32C3351FEBA91EB4F333 /* Debug */ = {
+		4B2F91A434967625C3C7716EEED54BC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CB2CB7718B1CF1E89AFD78646622721F /* Pods-CMLazyScrollViewController_Example.debug.xcconfig */;
 			buildSettings = {
@@ -439,6 +527,139 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5F1419DDE1445DDEF12B1355023DC776 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F55AEBA007BB5839CE478E2CD7D2597 /* Pods-CMLazyScrollViewController_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Pods-CMLazyScrollViewController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CMLazyScrollViewController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6162D39FF5B2992D390855F66A28D05D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0061174CBE0F592AC8E081E6586461F /* CMPageControl.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CMPageControl/CMPageControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CMPageControl/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CMPageControl/CMPageControl.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CMPageControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7F4C26FF17CFC18BC7578C09269D932F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 218FA2C2AE3364B91F8A297ED4D0CCF5 /* CMLazyScrollViewController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CMLazyScrollViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CMLazyScrollViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		83D0716A8EADF992E7E3BD189B6A6A19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0061174CBE0F592AC8E081E6586461F /* CMPageControl.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CMPageControl/CMPageControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CMPageControl/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CMPageControl/CMPageControl.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CMPageControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -485,39 +706,6 @@
 			};
 			name = Release;
 		};
-		97D82AB7F8AA3DA056608D6597001D88 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 218FA2C2AE3364B91F8A297ED4D0CCF5 /* CMLazyScrollViewController.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CMLazyScrollViewController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = CMLazyScrollViewController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		9E1E4E48AF2EAB23169E611BF694090A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -562,7 +750,39 @@
 			};
 			name = Debug;
 		};
-		B44257F7363431F0CA37AD21AB06B5DB /* Release */ = {
+		AA93056C2671A5E7C32AC9058BFB3593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 218FA2C2AE3364B91F8A297ED4D0CCF5 /* CMLazyScrollViewController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CMLazyScrollViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CMLazyScrollViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C6FB131AF08DF0FAC2AA7A5CE356B5A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A6FC630588435F689F9524A8EAB1F39A /* Pods-CMLazyScrollViewController_Example.release.xcconfig */;
 			buildSettings = {
@@ -597,44 +817,9 @@
 			};
 			name = Release;
 		};
-		D04C65037C6DB8C9AA7B0B6F544F0129 /* Debug */ = {
+		EF637A34C8B9559D81FABB645327F1A6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F55AEBA007BB5839CE478E2CD7D2597 /* Pods-CMLazyScrollViewController_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Pods-CMLazyScrollViewController_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CMLazyScrollViewController_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E9227EA828BB1E4604703A7D35DBCA16 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 218FA2C2AE3364B91F8A297ED4D0CCF5 /* CMLazyScrollViewController.xcconfig */;
+			baseConfigurationReference = 64E4C9C6594CE581C70A3897D8537C8E /* Pods-CMLazyScrollViewController_Tests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -647,17 +832,20 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CMLazyScrollViewController/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CMLazyScrollViewController/CMLazyScrollViewController.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CMLazyScrollViewController_Tests/Pods-CMLazyScrollViewController_Tests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = CMLazyScrollViewController;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CMLazyScrollViewController_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -667,11 +855,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		28B324BAC5FF3B3A2B8E1B7742F0A6A0 /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Tests" */ = {
+		23C3A3E939DFF9ABC1205F22B8BC4C16 /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D04C65037C6DB8C9AA7B0B6F544F0129 /* Debug */,
-				07D9985C00A8B95CF77AEE8090FE85EE /* Release */,
+				5F1419DDE1445DDEF12B1355023DC776 /* Debug */,
+				EF637A34C8B9559D81FABB645327F1A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -685,20 +873,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA53DEA6779FB62CAA1371178A4C0286 /* Build configuration list for PBXNativeTarget "CMLazyScrollViewController" */ = {
+		86DB7D1F1C256B8849308E5B7F9D165C /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				97D82AB7F8AA3DA056608D6597001D88 /* Debug */,
-				E9227EA828BB1E4604703A7D35DBCA16 /* Release */,
+				4B2F91A434967625C3C7716EEED54BC7 /* Debug */,
+				C6FB131AF08DF0FAC2AA7A5CE356B5A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF88BB6F5EF49275546000347940C2FC /* Build configuration list for PBXNativeTarget "Pods-CMLazyScrollViewController_Example" */ = {
+		8A7BCE8C5B84DFF77070DD27D41CBE28 /* Build configuration list for PBXNativeTarget "CMPageControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1C359E2D1EED32C3351FEBA91EB4F333 /* Debug */,
-				B44257F7363431F0CA37AD21AB06B5DB /* Release */,
+				83D0716A8EADF992E7E3BD189B6A6A19 /* Debug */,
+				6162D39FF5B2992D390855F66A28D05D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E616CEB5362E0A159C5A3AB01529577 /* Build configuration list for PBXNativeTarget "CMLazyScrollViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F4C26FF17CFC18BC7578C09269D932F /* Debug */,
+				AA93056C2671A5E7C32AC9058BFB3593 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

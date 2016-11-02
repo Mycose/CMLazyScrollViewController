@@ -1,5 +1,7 @@
 PODS:
-  - CMLazyScrollViewController (0.1.0)
+  - CMLazyScrollViewController (0.0.2):
+    - CMPageControl (~> 0.0.2)
+  - CMPageControl (0.0.2)
 
 DEPENDENCIES:
   - CMLazyScrollViewController (from `../`)
@@ -9,7 +11,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CMLazyScrollViewController: fd759ce3db68ba0fa532447ba6bb3532aa2b8f98
+  CMLazyScrollViewController: 3ae2de85b80564882f3da91e42beb098b86a0b78
+  CMPageControl: aa06b4e0c49a1253ac28889e8af6cfcf2cb7f181
 
 PODFILE CHECKSUM: 082c2de6f79bfda0f5c16d0e453867ea864d1b62
 

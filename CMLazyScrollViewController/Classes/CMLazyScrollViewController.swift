@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CMPageControl
 
 struct Constants {
     static let pageControlHeightConstraintValue : CGFloat = 40.0
@@ -33,7 +34,6 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     @IBOutlet fileprivate var pageControlBottomConstraint : NSLayoutConstraint!
 
     // MARK: - PRIVATE IBOUTLET
-    @IBOutlet fileprivate var pageControl : UIPageControl!
     @IBOutlet fileprivate var scrollView : UIScrollView!
 
     // MARK: - PRIVATE PROPERTIES
@@ -126,8 +126,10 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
-    // MARK: - PUBLIC SCROLL VIEW PROPERTIES
+    // MARK: - PUBLIC PROPERTIES
+    @IBOutlet var pageControl : CMPageControl!
 
+    // MARK: - PUBLIC SCROLL VIEW PROPERTIES
     public var isPagingEnable = true {
         didSet {
             scrollView.isPagingEnabled = isPagingEnable
@@ -165,7 +167,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
             cleanArray()
 
             numberOfViews = delegate.numberOfViewControllersIn(scrollViewController: self)
-            pageControl.numberOfPages = numberOfViews
+            pageControl.numberOfElements = numberOfViews
             if infinite == true {
                 numberOfViews += 2
             }
@@ -357,7 +359,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         let page = (scrollDirection == .Horizontal) ? (scrollView.contentOffset.x + (0.5 * pageSize.width)) / pageSize.width : (scrollView.contentOffset.y + (0.5 * pageSize.height)) / pageSize.height
 
         currentIndex = Int(page)
-        pageControl.currentPage = fixIndex(index: currentIndex)
+        pageControl.currentIndex = fixIndex(index: currentIndex)
 
         // last element, only for infinite mode
         if (infinite == true) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A692B325A7E97FE792D5D20C151C8618"
+               BlueprintIdentifier = "BABAE1DA34FE12A042F973AFE96B9FD3"
                BuildableName = "Pods_CMLazyScrollViewController_Tests.framework"
                BlueprintName = "Pods-CMLazyScrollViewController_Tests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A692B325A7E97FE792D5D20C151C8618"
+            BlueprintIdentifier = "BABAE1DA34FE12A042F973AFE96B9FD3"
             BuildableName = "Pods_CMLazyScrollViewController_Tests.framework"
             BlueprintName = "Pods-CMLazyScrollViewController_Tests"
             ReferencedContainer = "container:Pods.xcodeproj">
