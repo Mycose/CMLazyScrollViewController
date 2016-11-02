@@ -10,20 +10,17 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 or 
 https://appetize.io/app/qcb2rwc82uu53thuy2efvez6hr?device=iphone5s&scale=75&orientation=portrait&osVersion=9.3
 
-## Changes
-
-Future
-- Custom UIPageControl
+## Future
 - Smoothen the animation when you end dragging on infinite mode without pagging
 - Any ideas or request ?
 
-v0.0.2 (WIP)
+(WIP)
 - UIPageControl left/right/top or bot (Done for top/bot)
 - Vertical Scroll Support (almost done, just a little bug to fix)
-- Rotation Support (Done, will be in 0.0.2)
 
-v0.0.1
-- Draft version
+Ready For v0.0.2
+- Rotation Support 
+- Customisable Page Control (CMPageControl)
 
 ## CMLazyScrollViewController
 CMLazyScrollViewController is a UIViewController which has a UIScrollView and UIPageControl.
