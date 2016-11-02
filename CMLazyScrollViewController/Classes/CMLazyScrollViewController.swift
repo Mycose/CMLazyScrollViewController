@@ -41,7 +41,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     fileprivate var currentIndex : Int = 0 {
         didSet {
             if (oldValue != currentIndex) {
-                self.updateCarousel()
+                updateCarousel()
             }
         }
     }
@@ -63,21 +63,21 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // PROPERTIES AND GETTER/SETTER
     // used to set the current page with animation or not
     public func setCurrentPage(newValue : Int, animated : Bool) {
-        let x = (self.scrollDirection == .Horizontal) ? CGFloat(newValue)*self.pageSize.width : 0
-        let y = (self.scrollDirection == .Horizontal) ? 0 : CGFloat(newValue)*self.pageSize.height
-        self.scrollView.scrollRectToVisible(CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height), animated: animated)
-        self.currentIndex = newValue
+        let x = (scrollDirection == .Horizontal) ? CGFloat(newValue)*pageSize.width : 0
+        let y = (scrollDirection == .Horizontal) ? 0 : CGFloat(newValue)*pageSize.height
+        scrollView.scrollRectToVisible(CGRect(x: x, y: y, width: pageSize.width, height: pageSize.height), animated: animated)
+        currentIndex = newValue
     }
 
     // get current index
     public func currentPage() -> Int {
-        return self.fixIndex(index: self.currentIndex)
+        return fixIndex(index: currentIndex)
     }
 
     // get view controller at index, can return nil if view controller never created are not in stored anymore
     public func viewController(atIndex : Int) -> UIViewController? {
-        if atIndex > 0 && atIndex < self.numberOfViews {
-            return self.viewControllers[atIndex]
+        if atIndex > 0 && atIndex < numberOfViews {
+            return viewControllers[atIndex]
         }
         return nil
     }
@@ -85,7 +85,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // true if it should rotate and detect rotation
     public var canRotate : Bool = false {
         didSet {
-            if self.canRotate == true {
+            if canRotate == true {
                 NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
             } else {
                 NotificationCenter.default.removeObserver(self)
@@ -95,7 +95,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
     public var pageControlPaddingValue : CGFloat = 38.0 {
         didSet {
-            self.refreshPageControlConstraint()
+            refreshPageControlConstraint()
         }
     }
 
@@ -104,7 +104,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
     public var pageControlPosition : CMPageControlPosition = .Bottom {
         didSet {
-            self.refreshPageControlConstraint()
+            refreshPageControlConstraint()
         }
     }
 
@@ -116,13 +116,13 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // if you arrive on the first or last element, i scroll to the n-1 or index 1 element
     public var infinite = false {
         didSet {
-            self.reload()
+            reload()
         }
     }
 
     public var isPagerHidden = false {
         didSet {
-            self.pageControl.isHidden = self.isPagerHidden
+            pageControl.isHidden = isPagerHidden
         }
     }
 
@@ -130,19 +130,19 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
     public var isPagingEnable = true {
         didSet {
-            self.scrollView.isPagingEnabled = self.isPagingEnable
+            scrollView.isPagingEnabled = isPagingEnable
         }
     }
 
     public var isHorizontalScrollIndicatorHidden = false {
         didSet {
-            self.scrollView.showsHorizontalScrollIndicator = self.isHorizontalScrollIndicatorHidden
+            scrollView.showsHorizontalScrollIndicator = isHorizontalScrollIndicatorHidden
         }
     }
 
     public var isVerticalScrollIndicatorHidden = false {
         didSet {
-            self.scrollView.showsVerticalScrollIndicator = self.isVerticalScrollIndicatorHidden
+            scrollView.showsVerticalScrollIndicator = isVerticalScrollIndicatorHidden
         }
     }
 
@@ -152,65 +152,65 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     // carousel view controller delegate
     public var delegate : CMLazyScrollViewControllerDelegate? {
         didSet {
-            self.reload()
+            reload()
         }
     }
 
     // MARK: - PUBLIC FUNCTIONS
     // remove all views and rebuild the carousel
     public func reload() {
-        if let delegate = self.delegate {
+        if let delegate = delegate {
 
-            self.pageSize = self.view.frame.size
-            self.cleanArray()
+            pageSize = view.frame.size
+            cleanArray()
 
-            self.numberOfViews = delegate.numberOfViewControllersIn(scrollViewController: self)
-            self.pageControl.numberOfPages = self.numberOfViews
-            if self.infinite == true {
-                self.numberOfViews += 2
+            numberOfViews = delegate.numberOfViewControllersIn(scrollViewController: self)
+            pageControl.numberOfPages = numberOfViews
+            if infinite == true {
+                numberOfViews += 2
             }
 
-            let width = (self.scrollDirection == .Horizontal) ? CGFloat(self.numberOfViews)*self.pageSize.width : self.pageSize.width
-            let height = (self.scrollDirection == .Horizontal) ? self.pageSize.height : CGFloat(self.numberOfViews)*self.pageSize.height
-            self.scrollView.contentSize = CGSize(width: width, height: height)
-            self.viewControllers = Array(repeating: nil, count: self.numberOfViews)
-            self.views = Array(repeating: nil, count: self.numberOfViews)
+            let width = (scrollDirection == .Horizontal) ? CGFloat(numberOfViews)*pageSize.width : pageSize.width
+            let height = (scrollDirection == .Horizontal) ? pageSize.height : CGFloat(numberOfViews)*pageSize.height
+            scrollView.contentSize = CGSize(width: width, height: height)
+            viewControllers = Array(repeating: nil, count: numberOfViews)
+            views = Array(repeating: nil, count: numberOfViews)
 
 
-            let x = (self.infinite == true && self.scrollDirection == .Horizontal) ? self.pageSize.width : 0
-            let y = (self.infinite == true && self.scrollDirection == .Vertical) ? self.pageSize.height : 0
+            let x = (infinite == true && scrollDirection == .Horizontal) ? pageSize.width : 0
+            let y = (infinite == true && scrollDirection == .Vertical) ? pageSize.height : 0
 
-            self.scrollView.contentOffset = CGPoint(x: x, y: y)
-            self.currentIndex = (self.infinite == true) ? 1 : 0
-            self.updateCarousel()
+            scrollView.contentOffset = CGPoint(x: x, y: y)
+            currentIndex = (infinite == true) ? 1 : 0
+            updateCarousel()
         }
     }
 
     // MARK: - PRIVATE FUNCTIONS
     fileprivate func requestAndAddViewControllerAt(index : Int) {
-        let fixedIndex = self.fixIndex(index: index)
+        let fixedIndex = fixIndex(index: index)
         var vc : UIViewController!
 
-        if self.viewControllers[index] != nil {
-            vc = self.viewControllers[index]!
+        if viewControllers[index] != nil {
+            vc = viewControllers[index]!
         } else {
-            vc = self.delegate?.viewControllerIn(scrollViewController: self, atIndex: fixedIndex) ?? UIViewController()
+            vc = delegate?.viewControllerIn(scrollViewController: self, atIndex: fixedIndex) ?? UIViewController()
         }
 
         // force frame to the size of a page
-        vc.view.frame = CGRect(x: 0.0, y: 0.0, width: self.pageSize.width, height: self.pageSize.height)
-        self.addChildViewController(vc)
+        vc.view.frame = CGRect(x: 0.0, y: 0.0, width: pageSize.width, height: pageSize.height)
+        addChildViewController(vc)
 
-        let x : CGFloat = (self.scrollDirection == .Horizontal) ? CGFloat(index)*self.pageSize.width : 0.0
-        let y : CGFloat = (self.scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*self.pageSize.height
+        let x : CGFloat = (scrollDirection == .Horizontal) ? CGFloat(index)*pageSize.width : 0.0
+        let y : CGFloat = (scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*pageSize.height
         // TODO: if i dont use a view here the constraint from the vc.view will break because of the scrollView, i tried to do some autolayout with the views i added but no success :(
-        let view = UIView(frame: CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height))
+        let view = UIView(frame: CGRect(x: x, y: y, width: pageSize.width, height: pageSize.height))
         view.tag = index
         view.addSubview(vc.view)
 
-        self.scrollView.addSubview(view)
-        self.views[index] = view
-        self.viewControllers[index] = vc
+        scrollView.addSubview(view)
+        views[index] = view
+        viewControllers[index] = vc
         vc.didMove(toParentViewController: self)
     }
 
@@ -218,10 +218,10 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         var fixedIndex = index
 
         // if it's infinite, i fix the index to not ask views which does not exist
-        if self.infinite == true {
+        if infinite == true {
             if index == 0 {
-                fixedIndex = self.numberOfViews-3
-            } else if (index == self.numberOfViews-1) {
+                fixedIndex = numberOfViews-3
+            } else if (index == numberOfViews-1) {
                 fixedIndex = 0
             } else {
                 fixedIndex -= 1
@@ -231,93 +231,93 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     fileprivate func updateCarousel() {
-        let i = self.currentIndex
+        let i = currentIndex
 
         if i < 0 {
             return
         }
 
         if i != 0 {
-            self.requestAndAddViewControllerAt(index: i-1)
+            requestAndAddViewControllerAt(index: i-1)
         }
-        if i < self.numberOfViews-1 {
-            self.requestAndAddViewControllerAt(index: i)
+        if i < numberOfViews-1 {
+            requestAndAddViewControllerAt(index: i)
         }
-        if i < self.numberOfViews-1 {
-            self.requestAndAddViewControllerAt(index: i+1)
+        if i < numberOfViews-1 {
+            requestAndAddViewControllerAt(index: i+1)
         }
     }
 
     fileprivate func cleanArray() {
-        for i in 0..<self.viewControllers.count {
-            if let vc = self.viewControllers[i], let view = self.views[i] {
+        for i in 0..<viewControllers.count {
+            if let vc = viewControllers[i], let view = views[i] {
                 view.removeFromSuperview()
                 vc.view.removeFromSuperview()
                 vc.removeFromParentViewController()
-                self.viewControllers[i] = nil
-                self.views[i] = nil
+                viewControllers[i] = nil
+                views[i] = nil
             }
         }
     }
 
     fileprivate func clearSlot(index : Int) {
-        if let vc = self.viewControllers[index], let view = self.views[index] {
+        if let vc = viewControllers[index], let view = views[index] {
             vc.view.removeFromSuperview()
             vc.removeFromParentViewController()
-            if self.isLazy == true {
-                self.viewControllers[index] = nil
-                self.views[index] = nil
+            if isLazy == true {
+                viewControllers[index] = nil
+                views[index] = nil
             }
         }
     }
 
 
     fileprivate func checkDidScrollInfiniteModeWithX(scrollView: UIScrollView) {
-        let rest = scrollView.contentOffset.x.truncatingRemainder(dividingBy: self.pageSize.width)
-        if (self.currentIndex == self.numberOfViews-1) {
-            self.scrollView.scrollRectToVisible(CGRect(x: rest, y: 0, width: self.pageSize.width, height: self.pageSize.height), animated: false)
-            if let _ = self.targetContentOffset {
-                self.scrollView.scrollRectToVisible(CGRect(x: self.pageSize.width, y: 0, width: self.pageSize.width, height: self.pageSize.height), animated: true)
+        let rest = scrollView.contentOffset.x.truncatingRemainder(dividingBy: pageSize.width)
+        if (currentIndex == numberOfViews-1) {
+            scrollView.scrollRectToVisible(CGRect(x: rest, y: 0, width: pageSize.width, height: pageSize.height), animated: false)
+            if let _ = targetContentOffset {
+                scrollView.scrollRectToVisible(CGRect(x: pageSize.width, y: 0, width: pageSize.width, height: pageSize.height), animated: true)
             }
-            self.targetContentOffset = nil
-        } else if (self.currentIndex == 0 && (self.lastScrollViewOffset != nil) && (self.lastScrollViewOffset!.x > scrollView.contentOffset.x)) {
+            targetContentOffset = nil
+        } else if (currentIndex == 0 && (lastScrollViewOffset != nil) && (lastScrollViewOffset!.x > scrollView.contentOffset.x)) {
 
-            self.scrollView.scrollRectToVisible(CGRect(x: self.scrollView.contentSize.width-(self.pageSize.width*2)+rest, y: 0, width: self.pageSize.width, height: self.pageSize.height), animated: false)
+            scrollView.scrollRectToVisible(CGRect(x: scrollView.contentSize.width-(pageSize.width*2)+rest, y: 0, width: pageSize.width, height: pageSize.height), animated: false)
 
             // targetcontentoffset is set at the end draging event and allow to finish the movement after the scrollrecttovisible
-            if let _ = self.targetContentOffset {
-                self.scrollView.scrollRectToVisible(CGRect(x: self.scrollView.contentSize.width-(self.pageSize.width*2), y: 0, width: self.pageSize.width, height: self.pageSize.height), animated: true)
+            if let _ = targetContentOffset {
+                scrollView.scrollRectToVisible(CGRect(x: scrollView.contentSize.width-(pageSize.width*2), y: 0, width: pageSize.width, height: pageSize.height), animated: true)
             }
-            self.targetContentOffset = nil
+            targetContentOffset = nil
         }
     }
 
     fileprivate func checkDidScrollInfiniteModeWithY(scrollView: UIScrollView) {
-        let rest = scrollView.contentOffset.y.truncatingRemainder(dividingBy: self.pageSize.height)
-        if (self.currentIndex == self.numberOfViews-1) {
-            self.scrollView.scrollRectToVisible(CGRect(x: 0, y: rest, width: self.pageSize.width, height: self.pageSize.height), animated: false)
-            if let _ = self.targetContentOffset {
-                self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.pageSize.height, width: self.pageSize.width, height: self.pageSize.height), animated: true)
+        let rest = scrollView.contentOffset.y.truncatingRemainder(dividingBy: pageSize.height)
+        if (currentIndex == numberOfViews-1) {
+            scrollView.scrollRectToVisible(CGRect(x: 0, y: rest, width: pageSize.width, height: pageSize.height), animated: false)
+            if let _ = targetContentOffset {
+                scrollView.scrollRectToVisible(CGRect(x: 0, y: pageSize.height, width: pageSize.width, height: pageSize.height), animated: true)
             }
-            self.targetContentOffset = nil
-        } else if (self.currentIndex == 0 && (self.lastScrollViewOffset != nil) && (self.lastScrollViewOffset!.y > scrollView.contentOffset.y)) {
-            self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.scrollView.contentSize.height-(self.pageSize.height*2)+rest, width: self.pageSize.width, height: self.pageSize.height), animated: false)
+            targetContentOffset = nil
+        } else if (currentIndex == 0 && (lastScrollViewOffset != nil) && (lastScrollViewOffset!.y > scrollView.contentOffset.y)) {
+            scrollView.scrollRectToVisible(CGRect(x: 0, y: scrollView.contentSize.height-(pageSize.height*2)+rest, width: pageSize.width, height: pageSize.height), animated: false)
 
             // targetcontentoffset is set at the end draging event and allow to finish the movement after the scrollrecttovisible
-            if let _ = self.targetContentOffset {
-                self.scrollView.scrollRectToVisible(CGRect(x: 0, y: self.scrollView.contentSize.height-(self.pageSize.height*2), width: self.pageSize.width, height: self.pageSize.height), animated: true)
+            if let _ = targetContentOffset {
+                scrollView.scrollRectToVisible(CGRect(x: 0, y: scrollView.contentSize.height-(pageSize.height*2), width: pageSize.width, height: pageSize.height), animated: true)
             }
-            self.targetContentOffset = nil
+            targetContentOffset = nil
         }
     }
 
     fileprivate func refreshPageControlConstraint() {
-        switch self.pageControlPosition {
+        switch pageControlPosition {
         case .Top:
-            self.pageControlBottomConstraint.constant = self.view.frame.height - (self.pageControlPaddingValue + Constants.pageControlHeightConstraintValue)
+            pageControlBottomConstraint.constant = view.frame.height - (pageControlPaddingValue + Constants.pageControlHeightConstraintValue)
             break
         case .Bottom:
-            self.pageControlBottomConstraint.constant = self.pageControlPaddingValue
+            pageControlBottomConstraint.constant = pageControlPaddingValue
             break
         }
     }
@@ -337,100 +337,100 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        self.viewControllers.removeAll()
-        self.views.removeAll()
+        viewControllers.removeAll()
+        views.removeAll()
     }
 
     // MARK: - SCROLLVIEWDELEGATE
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if (self.currentIndex-2 >= 0) {
-            self.clearSlot(index: self.currentIndex-2)
+        if (currentIndex-2 >= 0) {
+            clearSlot(index: currentIndex-2)
         }
-        if (self.currentIndex+2 < self.numberOfViews-1) {
-            self.clearSlot(index: self.currentIndex+2)
+        if (currentIndex+2 < numberOfViews-1) {
+            clearSlot(index: currentIndex+2)
         }
-        self.scrollDelegate?.scrollViewDidEndDecelerating?(scrollView)
+        scrollDelegate?.scrollViewDidEndDecelerating?(scrollView)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = (self.scrollDirection == .Horizontal) ? (scrollView.contentOffset.x + (0.5 * self.pageSize.width)) / self.pageSize.width : (scrollView.contentOffset.y + (0.5 * self.pageSize.height)) / self.pageSize.height
+        let page = (scrollDirection == .Horizontal) ? (scrollView.contentOffset.x + (0.5 * pageSize.width)) / pageSize.width : (scrollView.contentOffset.y + (0.5 * pageSize.height)) / pageSize.height
 
-        self.currentIndex = Int(page)
-        self.pageControl.currentPage = self.fixIndex(index: self.currentIndex)
+        currentIndex = Int(page)
+        pageControl.currentPage = fixIndex(index: currentIndex)
 
         // last element, only for infinite mode
-        if (self.infinite == true) {
-            (self.scrollDirection == .Horizontal) ? self.checkDidScrollInfiniteModeWithX(scrollView: scrollView) : self.checkDidScrollInfiniteModeWithY(scrollView: scrollView)
+        if (infinite == true) {
+            (scrollDirection == .Horizontal) ? checkDidScrollInfiniteModeWithX(scrollView: scrollView) : checkDidScrollInfiniteModeWithY(scrollView: scrollView)
         }
 
-        self.lastScrollViewOffset = self.scrollView.contentOffset
-        self.scrollDelegate?.scrollViewDidScroll?(scrollView)
+        lastScrollViewOffset = scrollView.contentOffset
+        scrollDelegate?.scrollViewDidScroll?(scrollView)
     }
 
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        self.scrollDelegate?.scrollViewDidZoom?(scrollView)
+        scrollDelegate?.scrollViewDidZoom?(scrollView)
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.scrollDelegate?.scrollViewWillBeginDragging?(scrollView)
+        scrollDelegate?.scrollViewWillBeginDragging?(scrollView)
     }
 
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         self.targetContentOffset = targetContentOffset.pointee
-        self.scrollDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+        scrollDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.scrollDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
+        scrollDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
     }
 
     public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        self.scrollDelegate?.scrollViewWillBeginDecelerating?(scrollView)
+        scrollDelegate?.scrollViewWillBeginDecelerating?(scrollView)
     }
 
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        self.scrollDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
+        scrollDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
     }
 
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return self.scrollDelegate?.viewForZooming?(in: scrollView)
+        return scrollDelegate?.viewForZooming?(in: scrollView)
     }
 
     public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        self.scrollDelegate?.scrollViewWillBeginZooming?(scrollView, with: view)
+        scrollDelegate?.scrollViewWillBeginZooming?(scrollView, with: view)
     }
 
     public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        self.scrollDelegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
+        scrollDelegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
     }
 
     public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        if let bool = self.scrollDelegate?.scrollViewShouldScrollToTop?(scrollView) {
+        if let bool = scrollDelegate?.scrollViewShouldScrollToTop?(scrollView) {
             return bool
         }
         return true
     }
 
     public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        self.scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
+        scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
 
     public func screenDidRotate() {
-        self.pageSize = self.view.frame.size
-        let width = (self.scrollDirection == .Horizontal) ? CGFloat(self.numberOfViews)*self.pageSize.width : self.pageSize.width
-        let height = (self.scrollDirection == .Horizontal) ? self.pageSize.height : CGFloat(self.numberOfViews)*self.pageSize.height
-        self.scrollView.contentSize = CGSize(width: width, height: height)
+        pageSize = view.frame.size
+        let width = (scrollDirection == .Horizontal) ? CGFloat(numberOfViews)*pageSize.width : pageSize.width
+        let height = (scrollDirection == .Horizontal) ? pageSize.height : CGFloat(numberOfViews)*pageSize.height
+        scrollView.contentSize = CGSize(width: width, height: height)
 
-        for view in self.views {
+        for view in views {
             if let view = view {
                 let index : Int = view.tag
-                let x : CGFloat = (self.scrollDirection == .Horizontal) ? CGFloat(index)*self.pageSize.width : 0.0
-                let y : CGFloat = (self.scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*self.pageSize.height
-                view.frame = CGRect(x: x, y: y, width: self.pageSize.width, height: self.pageSize.height)
+                let x : CGFloat = (scrollDirection == .Horizontal) ? CGFloat(index)*pageSize.width : 0.0
+                let y : CGFloat = (scrollDirection == .Horizontal) ? 0.0 : CGFloat(index)*pageSize.height
+                view.frame = CGRect(x: x, y: y, width: pageSize.width, height: pageSize.height)
             }
         }
-        self.setCurrentPage(newValue: self.currentIndex, animated: false)
+        setCurrentPage(newValue: currentIndex, animated: false)
     }
 }
 
