@@ -24,7 +24,7 @@ class ViewController: UIViewController, CMLazyScrollViewControllerDelegate, UISc
         carousel.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         carousel.pageControlPaddingValue = 20.0
         carousel.canRotate = true
-        carousel.pageControlPosition = .Top
+        carousel.pageControlPosition = .Left
         carousel.scrollDirection = .Horizontal
         carousel.infinite = true
         carousel.isPagingEnable = true

@@ -16,6 +16,8 @@ struct Constants {
 public enum CMPageControlPosition {
     case Top
     case Bottom
+    case Left
+    case Right
 }
 
 public enum CMLazyScrollViewDirection {
@@ -31,6 +33,7 @@ public protocol CMLazyScrollViewControllerDelegate : class {
 public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate {
 
     // MARK: - PageControl Constraints
+    fileprivate var currentPageControlConstraints : [NSLayoutConstraint] = []
     @IBOutlet fileprivate var pageControlBottomConstraint : NSLayoutConstraint!
 
     // MARK: - PRIVATE IBOUTLET
@@ -127,7 +130,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     // MARK: - PUBLIC PROPERTIES
-    @IBOutlet var pageControl : CMPageControl!
+    @IBOutlet public var pageControl : CMPageControl!
 
     // MARK: - PUBLIC SCROLL VIEW PROPERTIES
     public var isPagingEnable = true {
@@ -314,12 +317,44 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     fileprivate func refreshPageControlConstraint() {
+        self.view.removeConstraints(currentPageControlConstraints)
+        currentPageControlConstraints.removeAll()
         switch pageControlPosition {
         case .Top:
-            pageControlBottomConstraint.constant = view.frame.height - (pageControlPaddingValue + Constants.pageControlHeightConstraintValue)
+            let topConstraint = NSLayoutConstraint(item: pageControl, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: pageControlPaddingValue)
+            let leadingConstraint = NSLayoutConstraint(item: pageControl, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
+            let trailingConstraint = NSLayoutConstraint(item: pageControl, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+            let heightConstraint = NSLayoutConstraint(item: pageControl, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 40.0)
+            currentPageControlConstraints = [topConstraint, leadingConstraint, trailingConstraint, heightConstraint]
+            self.view.addConstraints(currentPageControlConstraints)
+            pageControl.orientation = .Horizontal
             break
         case .Bottom:
-            pageControlBottomConstraint.constant = pageControlPaddingValue
+            let botConstraint = NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: pageControlPaddingValue)
+            let leadingConstraint = NSLayoutConstraint(item: pageControl, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
+            let trailingConstraint = NSLayoutConstraint(item: pageControl, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+            let heightConstraint = NSLayoutConstraint(item: pageControl, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 40.0)
+            currentPageControlConstraints = [botConstraint, leadingConstraint, trailingConstraint, heightConstraint]
+            self.view.addConstraints(currentPageControlConstraints)
+            pageControl.orientation = .Horizontal
+            break
+        case .Left:
+            let topConstraint = NSLayoutConstraint(item: pageControl, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0)
+            let leadingConstraint = NSLayoutConstraint(item: pageControl, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: pageControlPaddingValue)
+            let botConstraint = NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+            let widthConstraint = NSLayoutConstraint(item: pageControl, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 40.0)
+            currentPageControlConstraints = [topConstraint, leadingConstraint, botConstraint, widthConstraint]
+            self.view.addConstraints(currentPageControlConstraints)
+            pageControl.orientation = .Vertical
+            break
+        case .Right:
+            let topConstraint = NSLayoutConstraint(item: pageControl, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0)
+            let botConstraint = NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+            let trailingConstraint = NSLayoutConstraint(item: pageControl, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: pageControlPaddingValue)
+            let widthConstraint = NSLayoutConstraint(item: pageControl, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 40.0)
+            currentPageControlConstraints = [topConstraint, botConstraint, trailingConstraint, widthConstraint]
+            self.view.addConstraints(currentPageControlConstraints)
+            pageControl.orientation = .Vertical
             break
         }
     }
