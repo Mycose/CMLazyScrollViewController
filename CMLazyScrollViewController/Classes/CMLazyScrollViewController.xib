@@ -9,7 +9,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMLazyScrollViewController" customModule="CMLazyScrollViewController" customModuleProvider="target">
             <connections>
                 <outlet property="pageControl" destination="Eha-XG-gMw" id="VJO-nF-HjU"/>
-                <outlet property="pageControlBottomConstraint" destination="Rhj-Rr-5Hn" id="6dk-h3-aEQ"/>
                 <outlet property="scrollView" destination="Rf1-V0-KPl" id="DHc-pZ-RXU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="vom-xG-rAV"/>
             </connections>
@@ -25,11 +24,10 @@
                         <outlet property="delegate" destination="-1" id="B2b-wv-pWG"/>
                     </connections>
                 </scrollView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eha-XG-gMw" customClass="CMPageControl" customModule="CMPageControl">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eha-XG-gMw" customClass="CMPageControl" customModule="CMPageControl">
+                    <frame key="frameInset" minX="10" minY="590" width="355" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="FSe-sz-NJt"/>
-                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="numberOfElements">
                             <integer key="value" value="5"/>
@@ -41,10 +39,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Rf1-V0-KPl" secondAttribute="trailing" id="FPM-HP-KvT"/>
                 <constraint firstAttribute="bottom" secondItem="Rf1-V0-KPl" secondAttribute="bottom" id="GoC-HW-xZx"/>
-                <constraint firstAttribute="bottom" secondItem="Eha-XG-gMw" secondAttribute="bottom" constant="37" id="Rhj-Rr-5Hn"/>
-                <constraint firstAttribute="trailing" secondItem="Eha-XG-gMw" secondAttribute="trailing" constant="10" id="VYf-xR-eBj"/>
                 <constraint firstItem="Rf1-V0-KPl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YmY-sb-23U"/>
-                <constraint firstItem="Eha-XG-gMw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="uFc-Xy-LbM"/>
                 <constraint firstItem="Rf1-V0-KPl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xk5-zu-31o"/>
             </constraints>
         </view>

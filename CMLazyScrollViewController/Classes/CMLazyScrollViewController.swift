@@ -10,6 +10,8 @@ import UIKit
 import CMPageControl
 
 struct Constants {
+    // value of the velocity over which we change page
+    static let velocityMaxSensibility : CGFloat = 0.45
     static let pageControlHeightConstraintValue : CGFloat = 40.0
 }
 
@@ -40,6 +42,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     @IBOutlet fileprivate var scrollView : UIScrollView!
 
     // MARK: - PRIVATE PROPERTIES
+
     // current index of the scrollview
     fileprivate var currentIndex : Int = 0 {
         didSet {
@@ -96,7 +99,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
-    public var pageControlPaddingValue : CGFloat = 38.0 {
+    public var pageControlPaddingValue : CGFloat = 0.0 {
         didSet {
             refreshPageControlConstraint()
         }
@@ -238,17 +241,13 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     fileprivate func updateCarousel() {
         let i = currentIndex
 
-        if i < 0 {
-            return
-        }
+        if i < 0 { return }
 
         if i != 0 {
             requestAndAddViewControllerAt(index: i-1)
         }
         if i < numberOfViews-1 {
             requestAndAddViewControllerAt(index: i)
-        }
-        if i < numberOfViews-1 {
             requestAndAddViewControllerAt(index: i+1)
         }
     }
@@ -276,7 +275,6 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
-
     fileprivate func checkDidScrollInfiniteModeWithX(scrollView: UIScrollView) {
         let rest = scrollView.contentOffset.x.truncatingRemainder(dividingBy: pageSize.width)
         if (currentIndex == numberOfViews-1) {
@@ -286,12 +284,10 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
             }
             targetContentOffset = nil
         } else if (currentIndex == 0 && (lastScrollViewOffset != nil) && (lastScrollViewOffset!.x > scrollView.contentOffset.x)) {
-
             scrollView.scrollRectToVisible(CGRect(x: scrollView.contentSize.width-(pageSize.width*2)+rest, y: 0, width: pageSize.width, height: pageSize.height), animated: false)
-
             // targetcontentoffset is set at the end draging event and allow to finish the movement after the scrollrecttovisible
             if let _ = targetContentOffset {
-                scrollView.scrollRectToVisible(CGRect(x: scrollView.contentSize.width-(pageSize.width*2), y: 0, width: pageSize.width, height: pageSize.height), animated: true)
+               scrollView.scrollRectToVisible(CGRect(x: scrollView.contentSize.width-(pageSize.width*2), y: 0, width: pageSize.width, height: pageSize.height), animated: true)
             }
             targetContentOffset = nil
         }
@@ -308,7 +304,6 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         } else if (currentIndex == 0 && (lastScrollViewOffset != nil) && (lastScrollViewOffset!.y > scrollView.contentOffset.y)) {
             scrollView.scrollRectToVisible(CGRect(x: 0, y: scrollView.contentSize.height-(pageSize.height*2)+rest, width: pageSize.width, height: pageSize.height), animated: false)
 
-            // targetcontentoffset is set at the end draging event and allow to finish the movement after the scrollrecttovisible
             if let _ = targetContentOffset {
                 scrollView.scrollRectToVisible(CGRect(x: 0, y: scrollView.contentSize.height-(pageSize.height*2), width: pageSize.width, height: pageSize.height), animated: true)
             }
@@ -318,7 +313,6 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
     fileprivate func refreshPageControlConstraint() {
         self.view.removeConstraints(currentPageControlConstraints)
-        currentPageControlConstraints.removeAll()
         switch pageControlPosition {
         case .Top:
             let topConstraint = NSLayoutConstraint(item: pageControl, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: pageControlPaddingValue)
@@ -330,7 +324,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
             pageControl.orientation = .Horizontal
             break
         case .Bottom:
-            let botConstraint = NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: pageControlPaddingValue)
+            let botConstraint = NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -pageControlPaddingValue)
             let leadingConstraint = NSLayoutConstraint(item: pageControl, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
             let trailingConstraint = NSLayoutConstraint(item: pageControl, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
             let heightConstraint = NSLayoutConstraint(item: pageControl, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 40.0)
@@ -350,7 +344,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         case .Right:
             let topConstraint = NSLayoutConstraint(item: pageControl, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0)
             let botConstraint = NSLayoutConstraint(item: pageControl, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-            let trailingConstraint = NSLayoutConstraint(item: pageControl, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: pageControlPaddingValue)
+            let trailingConstraint = NSLayoutConstraint(item: pageControl, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: -pageControlPaddingValue)
             let widthConstraint = NSLayoutConstraint(item: pageControl, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 40.0)
             currentPageControlConstraints = [topConstraint, botConstraint, trailingConstraint, widthConstraint]
             self.view.addConstraints(currentPageControlConstraints)
@@ -378,8 +372,12 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         views.removeAll()
     }
 
-    // MARK: - SCROLLVIEWDELEGATE
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+    }
 
+    // MARK: - SCROLLVIEWDELEGATE
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if (currentIndex-2 >= 0) {
             clearSlot(index: currentIndex-2)
@@ -397,7 +395,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         pageControl.currentIndex = fixIndex(index: currentIndex)
 
         // last element, only for infinite mode
-        if (infinite == true) {
+        if (infinite == true && scrollView.isTracking == false) {
             (scrollDirection == .Horizontal) ? checkDidScrollInfiniteModeWithX(scrollView: scrollView) : checkDidScrollInfiniteModeWithY(scrollView: scrollView)
         }
 
@@ -414,7 +412,17 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     }
 
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        self.targetContentOffset = targetContentOffset.pointee
+        if (isPagingEnable == true) {
+            var index : CGFloat = CGFloat(currentIndex)
+            if (velocity.x > Constants.velocityMaxSensibility || velocity.y > Constants.velocityMaxSensibility) {
+                index += 1
+            } else if (velocity.x < -Constants.velocityMaxSensibility || velocity.y < -Constants.velocityMaxSensibility) {
+                index -= 1
+            }
+            targetContentOffset.pointee.x = (scrollDirection == .Horizontal) ? (index*pageSize.width) : 0
+            targetContentOffset.pointee.y = (scrollDirection == .Horizontal) ? 0.0 : (pageSize.height*index)
+            self.targetContentOffset = targetContentOffset.pointee
+        }
         scrollDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
 
