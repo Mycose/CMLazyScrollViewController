@@ -14,13 +14,13 @@ https://appetize.io/app/qcb2rwc82uu53thuy2efvez6hr?device=iphone5s&scale=75&orie
 - Smoothen the animation when you end dragging on infinite mode without pagging
 - Any ideas or request ?
 
-(WIP)
-- UIPageControl left/right/top or bot (Done for top/bot)
-- Vertical Scroll Support (almost done, just a little bug to fix)
+## Algorithm
 
-Ready For v0.0.2
-- Rotation Support 
-- Customisable Page Control (CMPageControl)
+For the infinite carousel/scroll etc... I see only two possibilities:
+1- Use a UICollectionView or UITableView, setting the number of elements to a really high value, and scroll at the middle at the beginning, and then play with / and % to have the right index everytime
+2- Imagine you have a UIScrollView with pages like this 1 2 3 4 5. Basically you just want to have 5 1 2 3 4 5 1, and when the user scroll and arrive on the first 1 or the second 5, you want to scroll back at the beginning or the end without animation and seemlessly, it create the feeling of infinity since you will basically scroll over and over on the same elements
+
+In this projet I used the second way
 
 ## CMLazyScrollViewController
 CMLazyScrollViewController is a UIViewController which has a UIScrollView and UIPageControl.
