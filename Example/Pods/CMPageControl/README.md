@@ -8,15 +8,10 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Changes
-
-Future
+## Future
 - Maybe remove the delegation since it's an UIControl
 - Animation for changing selected element
 - Any ideas or request ?
-
-v0.0.1
-- Draft version
 
 ## CMPageControl
 CMPageControl is a UIControl working like a UIPageControl but support horizontal/vertical display and is customisable.
@@ -25,40 +20,43 @@ Currently you can customize the borderWidth, the backgroundColor, the borderColo
 ## CMPageControl Properties:
 ```swift
 // current index, will apply selected style if you set manually
-public var currentIndex : Int = 0
+@IBInspectable public var currentIndex : Int = 0
  
 // when set will "setup" the views
-public var numberOfElements : Int = 0
+@IBInspectable public var numberOfElements : Int = 0
   
 // to selecte if round or square
-public var isRounded : Bool = true
+@IBInspectable public var isRounded : Bool = true
 
 // unselected image
-public var elementImage : UIImage?
+@IBInspectable public var elementImage : UIImage?
 
 // unselected background color
-public var elementBackgroundColor : UIColor = UIColor.gray
+@IBInspectable public var elementBackgroundColor : UIColor = UIColor.gray
 
 // unselected border color
-public var elementBorderColor : UIColor = UIColor.gray
+@IBInspectable public var elementBorderColor : UIColor = UIColor.gray
 
 // unselected border width
-public var elementBorderWidth : CGFloat = 1.0
+@IBInspectable public var elementBorderWidth : CGFloat = 1.0
+
+// element cornerRadius
+@IBInspectable public var elementCornerRadius : CGFloat = 5.0
 
 // selected image
-public var elementSelectedImage : UIImage? {
+@IBInspectable public var elementSelectedImage : UIImage? {
 
 // selected background color
-public var elementSelectedBackgroundColor : UIColor = UIColor.white
+@IBInspectable public var elementSelectedBackgroundColor : UIColor = UIColor.white
 
 // selected border color
-public var elementSelectedBorderColor : UIColor = UIColor.white
+@IBInspectable public var elementSelectedBorderColor : UIColor = UIColor.white
 
 // selected border width
-public var elementSelectedBorderWidth : CGFloat = 2.0
+@IBInspectable public var elementSelectedBorderWidth : CGFloat = 2.0
 
 // element width and height
-public var elementWidth : CGFloat = 10.0
+@IBInspectable public var elementWidth : CGFloat = 10.0
 
 // if you want the view to be aligned vertically or horizontally
 public var orientation : CMPageControlOrientation = .Horizontal

@@ -26,6 +26,7 @@ public class CMPageControl: UIControl {
 
     fileprivate var views : [UIView?] = []
     fileprivate var imageViews : [UIImageView?] = []
+    fileprivate var buttons : [UIButton?] = []
 
     fileprivate var buttonWidth : CGFloat = 10.0
 
@@ -34,6 +35,12 @@ public class CMPageControl: UIControl {
             if let view = view {
                 view.removeFromSuperview()
                 views[view.tag] = nil
+            }
+        }
+        for button in buttons {
+            if let btn = button {
+                btn.removeFromSuperview()
+                buttons[btn.tag] = nil
             }
         }
     }
@@ -62,6 +69,8 @@ public class CMPageControl: UIControl {
         }
     }
 
+    @IBInspectable public var elementSpacing : CGFloat = 10.0
+
     @IBInspectable public var elementWidth : CGFloat = 7.0 {
         didSet {
             buttonWidth = elementWidth * 1.5
@@ -70,7 +79,14 @@ public class CMPageControl: UIControl {
 
     @IBInspectable public var elementCornerRadius : CGFloat = 5.0 {
         didSet {
-            setup()
+            if (isRounded == true) {
+                for view in views {
+                    if let view = view {
+                        view.layer.masksToBounds = true
+                        view.layer.cornerRadius = elementCornerRadius
+                    }
+                }
+            }
         }
     }
 
@@ -175,8 +191,10 @@ public class CMPageControl: UIControl {
         var yPos : CGFloat = 0.0
 
         views = Array(repeating: nil, count: numberOfElements)
+        buttons = Array(repeating: nil, count: numberOfElements)
         for i in 0..<numberOfElements {
 
+            // calculate x and y depending on if vertical or horizontal and depending on index
             if (orientation == .Horizontal) {
                 spaceWidth = (frame.width - (CGFloat(numberOfElements) * elementWidth)) / CGFloat(nbSpace)
                 xPos = (CGFloat(i) * elementWidth) + (CGFloat(i+1) * spaceWidth)
@@ -189,6 +207,7 @@ public class CMPageControl: UIControl {
 
             var view : UIView = UIView()
 
+            // if there is an image set, create UIImageView instead of UIView
             if let image = elementImage {
                 let imageView = UIImageView(frame: CGRect(x: xPos, y: yPos, width: elementWidth, height: elementWidth))
                 imageView.contentMode = .scaleAspectFit
@@ -205,16 +224,20 @@ public class CMPageControl: UIControl {
                 }
             }
 
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: buttonWidth, height: buttonWidth))
-            button.center = view.center
-            button.tag = i
-            button.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
-
             addSubview(view)
-            addSubview(button)
-
             view.tag = i
             views[i] = view
+
+            // button put over the indicator view if width != 0.0 (cant happen normally)
+            // i prefer to use a button over the indicator view because else there is no way to control the clickable area. Here you can just set a bigger value for buttonWidth for a bigger clickable area
+            if buttonWidth != 0.0 {
+                let button = UIButton(frame: CGRect(x: 0, y: 0, width: buttonWidth, height: buttonWidth))
+                button.center = view.center
+                button.tag = i
+                button.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
+                addSubview(button)
+                buttons[i] = button
+            }
         }
         currentIndex = 0
     }
@@ -228,22 +251,28 @@ public class CMPageControl: UIControl {
     }
 
     override public func layoutSubviews() {
-        let nbSpace : Int = numberOfElements + 1
-        var spaceWidth : CGFloat = 0.0
+        let nbSpace : Int = numberOfElements - 1
+        let elementsWidth : CGFloat = CGFloat(numberOfElements) * elementWidth
+        let elementsSpacing : CGFloat = CGFloat(nbSpace) * elementSpacing
+        let frameWidth : CGFloat = (orientation == .Horizontal) ? self.frame.width : self.frame.height
+        let posStart : CGFloat = (frameWidth - (elementsWidth + elementsSpacing)) / 2.0
+
         var xPos : CGFloat = 0.0
         var yPos : CGFloat = 0.0
         for view in views {
             if let view = view {
+                let index : CGFloat = CGFloat(view.tag)
                 if (orientation == .Horizontal) {
-                    spaceWidth = (frame.width - (CGFloat(numberOfElements) * elementWidth)) / CGFloat(nbSpace)
-                    xPos = (CGFloat(view.tag) * elementWidth) + (CGFloat(view.tag+1) * spaceWidth)
+                    xPos = posStart + (index * elementWidth) + (index * elementSpacing)
                     yPos = (frame.height - elementWidth) / 2
                 } else {
-                    spaceWidth = (frame.height - (CGFloat(numberOfElements) * elementWidth)) / CGFloat(nbSpace)
-                    yPos = (CGFloat(view.tag) * elementWidth) + (CGFloat(view.tag+1) * spaceWidth)
+                    yPos = posStart + (index * elementWidth) + (index * elementSpacing)
                     xPos = (frame.width - elementWidth) / 2
                 }
                 view.frame = CGRect(x: xPos, y: yPos, width: elementWidth, height: elementWidth)
+                if let btn = buttons[view.tag] {
+                    btn.center = view.center
+                }
             }
         }
     }

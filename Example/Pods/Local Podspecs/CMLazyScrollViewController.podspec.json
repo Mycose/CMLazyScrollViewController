@@ -21,7 +21,7 @@
   "source_files": "CMLazyScrollViewController/Classes/**/*",
   "dependencies": {
     "CMPageControl": [
-      "~> 0.0.2"
+      "~> 0.0.3"
     ]
   }
 }
