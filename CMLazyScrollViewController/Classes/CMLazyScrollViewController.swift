@@ -92,7 +92,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     public var canRotate : Bool = false {
         didSet {
             if canRotate == true {
-                NotificationCenter.default.addObserver(self, selector: "screenDidRotate", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(screenDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
             } else {
                 NotificationCenter.default.removeObserver(self)
             }
@@ -267,7 +267,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
 
     // clean specific slot in array
     fileprivate func clearSlot(index : Int) {
-        if let vc = viewControllers[index], let view = views[index] {
+        if let vc = viewControllers[index], let _ = views[index] {
             vc.view.removeFromSuperview()
             vc.removeFromParentViewController()
             if isLazy == true {
@@ -420,9 +420,9 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         if (isPagingEnable == true) {
             var index : CGFloat = CGFloat(currentIndex)
             // get the relative offset in the current page, x for horizontal and y for vertical mode
-            var relativeOffset : CGFloat = (scrollDirection == .Horizontal) ? scrollView.contentOffset.x.truncatingRemainder(dividingBy: self.view.frame.width) : scrollView.contentOffset.y.truncatingRemainder(dividingBy: self.view.frame.height)
+            let relativeOffset : CGFloat = (scrollDirection == .Horizontal) ? scrollView.contentOffset.x.truncatingRemainder(dividingBy: self.view.frame.width) : scrollView.contentOffset.y.truncatingRemainder(dividingBy: self.view.frame.height)
             // get the value we went compare the offset to width/2 or height/2
-            var offsetValueToCompare : CGFloat = (scrollDirection == .Horizontal) ? (self.view.frame.width/2) : (self.view.frame.height/2)
+            let offsetValueToCompare : CGFloat = (scrollDirection == .Horizontal) ? (self.view.frame.width/2) : (self.view.frame.height/2)
 
             // we check if the velocity value is high enought to change page and if we didn't already change of page (with the relative offset)
             if ((velocity.x > Constants.velocityMaxSensibility || velocity.y > Constants.velocityMaxSensibility) && (relativeOffset < offsetValueToCompare)) {
