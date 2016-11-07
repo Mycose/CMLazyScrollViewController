@@ -11,7 +11,7 @@ import CMPageControl
 
 struct Constants {
     // value of the velocity over which we change page
-    static let velocityMaxSensibility : CGFloat = 0.45
+    static let velocityMaxSensibility : CGFloat = 0.50
     static let pageControlHeightConstraintValue : CGFloat = 40.0
 }
 
@@ -252,6 +252,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
+    // clean all the array
     fileprivate func cleanArray() {
         for i in 0..<viewControllers.count {
             if let vc = viewControllers[i], let view = views[i] {
@@ -264,6 +265,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
+    // clean specific slot in array
     fileprivate func clearSlot(index : Int) {
         if let vc = viewControllers[index], let view = views[index] {
             vc.view.removeFromSuperview()
@@ -275,6 +277,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
+    // check if index is at the end or begin and decide if it should scroll or not
     fileprivate func checkDidScrollInfiniteModeWithX(scrollView: UIScrollView) {
         let rest = scrollView.contentOffset.x.truncatingRemainder(dividingBy: pageSize.width)
         if (currentIndex == numberOfViews-1) {
@@ -293,6 +296,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
+    // check if index is at the end or begin and decide if it should scroll or not
     fileprivate func checkDidScrollInfiniteModeWithY(scrollView: UIScrollView) {
         let rest = scrollView.contentOffset.y.truncatingRemainder(dividingBy: pageSize.height)
         if (currentIndex == numberOfViews-1) {
@@ -311,6 +315,7 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
         }
     }
 
+    // add constraint for the page control to put it on the left/top/bottom/right
     fileprivate func refreshPageControlConstraint() {
         self.view.removeConstraints(currentPageControlConstraints)
         switch pageControlPosition {
@@ -414,11 +419,18 @@ public class CMLazyScrollViewController : UIViewController, UIScrollViewDelegate
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if (isPagingEnable == true) {
             var index : CGFloat = CGFloat(currentIndex)
-            if (velocity.x > Constants.velocityMaxSensibility || velocity.y > Constants.velocityMaxSensibility) {
+            // get the relative offset in the current page, x for horizontal and y for vertical mode
+            var relativeOffset : CGFloat = (scrollDirection == .Horizontal) ? scrollView.contentOffset.x.truncatingRemainder(dividingBy: self.view.frame.width) : scrollView.contentOffset.y.truncatingRemainder(dividingBy: self.view.frame.height)
+            // get the value we went compare the offset to width/2 or height/2
+            var offsetValueToCompare : CGFloat = (scrollDirection == .Horizontal) ? (self.view.frame.width/2) : (self.view.frame.height/2)
+
+            // we check if the velocity value is high enought to change page and if we didn't already change of page (with the relative offset)
+            if ((velocity.x > Constants.velocityMaxSensibility || velocity.y > Constants.velocityMaxSensibility) && (relativeOffset < offsetValueToCompare)) {
                 index += 1
-            } else if (velocity.x < -Constants.velocityMaxSensibility || velocity.y < -Constants.velocityMaxSensibility) {
+            } else if (velocity.x < -Constants.velocityMaxSensibility || velocity.y < -Constants.velocityMaxSensibility && (relativeOffset > offsetValueToCompare)) {
                 index -= 1
             }
+            // set the target offset we want to go to
             targetContentOffset.pointee.x = (scrollDirection == .Horizontal) ? (index*pageSize.width) : 0
             targetContentOffset.pointee.y = (scrollDirection == .Horizontal) ? 0.0 : (pageSize.height*index)
             self.targetContentOffset = targetContentOffset.pointee
